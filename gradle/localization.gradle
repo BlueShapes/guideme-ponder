@@ -1,0 +1,269 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import java.security.MessageDigest
+
+def captionCheck = tasks.register('checkCaptionUnits', Exec) {
+    description = 'Check authored sentence units and explicit continuation markers in all locales.'
+    commandLine 'python', '-X', 'utf8', 'tools/captions.py', 'check-all-locales'
+}
+def captionStyleCheck = tasks.register('checkCaptionStyles', Exec) {
+    description = 'Check reviewed roles against every localized authored caption unit.'
+    commandLine 'python', '-X', 'utf8', 'tools/caption_styles.py'
+}
+
+def platformTextCheck = tasks.register('checkPlatformText', Exec) {
+    description = 'Check reviewed loader-specific captions and item descriptions.'
+    commandLine 'python', '-X', 'utf8', 'tools/platform_text.py'
+}
+tasks.matching { it.name == 'generateGuideResources' || it.name == 'check' }.configureEach {
+    dependsOn captionCheck, captionStyleCheck, platformTextCheck
+}
+
+// Source and generated pages share one key set; translations cannot silently fall back.
+ext.generateLocalizedGuideResources = { lessons, destination ->
+    def readMap = { path ->
+        def text = file(path).getText('UTF-8')
+        def data = new JsonSlurper().parseText(text)
+        assert data instanceof Map : "Expected an object in ${path}"
+        assert (text =~ /"(?:[^"\\]|\\.)*"\s*:/).size() == data.size() : "Duplicate key in ${path}"
+        data
+    }
+    def languages = readMap('src/main/translations/languages.json')
+    assert languages.keySet() == ['ja_jp', 'en_us', 'hi_in', 'zh_hk', 'zh_tw', 'zh_cn', 'ru_ru',
+        'pt_br', 'pt_pt', 'es_es', 'fr_fr', 'de_de', 'cs_cz', 'pl_pl', 'ms_my', 'ro_ro',
+        'ar_sa', 'id_id', 'ko_kr', 'vi_vn', 'tr_tr', 'it_it'].toSet() : 'All 22 supported languages are required'
+    def sources = [:]
+    def descriptions = new JsonSlurper().parse(file('src/main/resources/assets/ae2ponder/guide/item_descriptions.json'), 'UTF-8')
+    assert descriptions instanceof List : 'Expected item descriptions array'
+    assert descriptions*.id.toSet().size() == descriptions.size() : 'Duplicate item description ID'
+    def describedItems = [] as Set
+    descriptions.each { entry ->
+        assert entry.id ==~ /[a-z0-9_]+/ : 'Invalid item description ID'
+        def legacyTone = entry.tone ?: 'NORMAL'
+        assert legacyTone in ['NORMAL', 'WARNING', 'HINT'] : "Invalid item description role: ${entry.id}"
+        if (entry.containsKey('requiresMods')) {
+            assert entry.requiresMods instanceof List : "Required mods must be a list: ${entry.id}"
+            assert entry.requiresMods.toSet().size() == entry.requiresMods.size() : "Duplicate required mod ID: ${entry.id}"
+            assert entry.requiresMods.every { it instanceof String && it ==~ /[a-z][a-z0-9_]{1,63}/ } : "Invalid required mod ID: ${entry.id}"
+        }
+        if (entry.containsKey('tones')) {
+            assert entry.tones instanceof List && !entry.tones.isEmpty() : "Explicit roles must be a non-empty list: ${entry.id}"
+            assert entry.tones.every { it instanceof String && it in ['NORMAL', 'WARNING', 'HINT'] } : "Invalid item description role: ${entry.id}"
+        }
+        assert entry.items instanceof List && entry.items : "Missing items in ${entry.id}"
+        entry.items.each { item ->
+            assert item ==~ '[a-z0-9_.-]+:[a-z0-9_./-]+' : "Invalid described item: ${item}"
+            assert describedItems.add(item) : "Duplicate described item: ${item}"
+        }
+    }
+    ['en_us': 'en', 'ja_jp': 'ja'].each { language, field ->
+        def strings = readMap("src/main/templates/lang/${language}.json")
+        descriptions.each { entry ->
+            assert entry.text[field] : "Missing ${field} description in ${entry.id}"
+            strings["ae2ponder.description.${entry.id}".toString()] = entry.text[field]
+        }
+        lessons.each { lesson ->
+            assert lesson.title[field] && lesson.summary[field] : "Missing ${field} translation in ${lesson.id}"
+            strings["ae2ponder.ponder.${lesson.id}.header".toString()] = lesson.title[field]
+            strings["ae2ponder.lesson.${lesson.id}.summary".toString()] = lesson.summary[field]
+            lesson.steps.eachWithIndex { step, index ->
+                assert step.text[field] : "Missing ${field} subtitle in ${lesson.id}"
+                strings["ae2ponder.ponder.shared.${lesson.id}_${index}".toString()] = step.text[field]
+            }
+        }
+        sources[language] = strings
+    }
+    def expected = sources.en_us
+    assert sources.ja_jp.keySet() == expected.keySet() : 'English/Japanese translation keys differ'
+    def sourceText = new StringBuilder()
+    sources.sort().each { language, strings ->
+        sourceText.append(language).append('\u0000')
+        strings.sort().each { key, value ->
+            sourceText.append(key).append('\u0000').append(value).append('\u0000')
+        }
+    }
+    def sourceHash = MessageDigest.getInstance('SHA-256').digest(sourceText.toString().getBytes('UTF-8')).encodeHex().toString()
+    def reviews = readMap('src/main/translations/source-review.json')
+    assert reviews.keySet() == sources.keySet() : 'English/Japanese source review records are required'
+    sources.keySet().each { language ->
+        assert reviews[language] == sourceHash : "Stale source review: ${language}; review changed text in both original languages"
+    }
+    def placeholders = { text ->
+        def result = []
+        def index = 0
+        (text =~ /%(?:(\d+)\$)?([sd])/).each { match ->
+            if (!match[1]) index++
+            result.add([match[1] ? match[1].toInteger() : index, match[2]])
+        }
+        result.sort { a, b -> a[0] <=> b[0] ?: a[1] <=> b[1] }
+    }
+    def write = { path, content ->
+        def target = new File(destination, path)
+        target.parentFile.mkdirs()
+        target.setText(content, 'UTF-8')
+    }
+    def escape = { text -> text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') }
+    // Only our explanatory prose is styled; links, headings and GuideME's UI retain native styles.
+    // 0xf6f6e5 is PonderPalette.WHITE blended halfway with 0xffffdd, as in native Ponder.
+    def normalText = { text ->
+        text.split(/\n\s*\n/, -1).collect { paragraph -> '<Color color="#f6f6e5">' + escape(paragraph) + '</Color>' }.join('\n\n')
+    }
+    // Newlines are authored display boundaries; continuation marks are presentation, not omitted words.
+    def captionSearchText = { text -> text.replace('…\n…', ' ').replace('\n', ' ') }
+    def localized = [:]
+    languages.each { language, name ->
+        def strings = sources[language]
+        if (strings == null) {
+            strings = readMap("src/main/translations/${language}.json")
+            assert strings.remove('_source_hash') == sourceHash : "Stale ${language} translation: review source changes in every supported language"
+        }
+        assert strings.keySet() == expected.keySet() : "Missing/extra ${language} translations: ${expected.keySet() - strings.keySet()} / ${strings.keySet() - expected.keySet()}"
+        strings.each { key, value ->
+            assert value instanceof String && !value.trim().isEmpty() : "Empty ${language} translation: ${key}"
+            assert placeholders(value) == placeholders(expected[key]) : "Invalid placeholders: ${language}/${key}"
+        }
+        descriptions.each { entry ->
+            def key = "ae2ponder.description.${entry.id}".toString()
+            def units = strings[key].split('\\n', -1)
+            assert units.every { !it.trim().isEmpty() } : "Empty item description unit: ${language}/${entry.id}"
+            if (entry.containsKey('tones')) {
+                assert entry.tones.size() == units.length : "Description roles must match localized units: ${language}/${entry.id}"
+            }
+        }
+        localized[language] = strings
+    }
+    def captionStyles = [:]
+    assert fileTree('src/main/caption_styles').matching { include '*.json' }.files.collect { it.name - '.json' }.toSet() == languages.keySet() : 'Caption roles require all 22 locales'
+    localized.each { language, strings ->
+        def captions = strings.findAll { key, value -> key.startsWith('ae2ponder.ponder.shared.') && !key.endsWith('.caption_page') }
+        def styles = readMap("src/main/caption_styles/${language}.json")
+        def reviewedHash = styles.remove('_caption_hash')
+        def captionText = new StringBuilder(language).append('\u0000')
+        captions.sort().each { key, value -> captionText.append(key).append('\u0000').append(value).append('\u0000') }
+        def captionHash = MessageDigest.getInstance('SHA-256').digest(captionText.toString().getBytes('UTF-8')).encodeHex().toString()
+        assert reviewedHash == captionHash : "Stale caption role review: ${language}"
+        assert styles.keySet() == captions.keySet() : "Caption role keys differ: ${language}"
+        styles.each { key, roles ->
+            assert roles instanceof List && roles.size() == captions[key].split('\\n', -1).length : "Caption roles must match localized units: ${language}/${key}"
+            assert roles.every { it in ['NORMAL', 'WARNING', 'HINT'] } : "Invalid caption role: ${language}/${key}"
+        }
+        captionStyles[language] = styles
+    }
+    // Overrides are authored once, then feed the same language, role and search-page generation.
+    def platform = providers.gradleProperty('platform').getOrElse('neoforge')
+    def overrideFile = file("src/${platform}/translations/text_overrides.json")
+    if (overrideFile.isFile()) {
+        // checkPlatformText uses recursive duplicate-key detection for this nested document.
+        def overrides = new JsonSlurper().parse(overrideFile, 'UTF-8')
+        assert overrides instanceof Map : 'Expected platform overrides object'
+        assert overrides.keySet() == ['_source_hash', 'locales'].toSet() && overrides._source_hash == sourceHash : 'Stale/invalid platform source review'
+        assert overrides.locales instanceof Map && overrides.locales : 'Empty platform text overrides'
+        overrides.locales.each { language, entries ->
+            assert localized.containsKey(language) && entries instanceof Map && entries : "Invalid platform override locale: ${language}"
+            entries.each { key, entry ->
+                assert localized[language].containsKey(key) : "Unknown platform key: ${language}/${key}"
+                assert entry instanceof Map && entry.keySet() == ['baseTextSha256', 'text', 'roles', '_review_hash'].toSet() : "Invalid platform fields: ${language}/${key}"
+                def digest = { text -> MessageDigest.getInstance('SHA-256').digest(text.getBytes('UTF-8')).encodeHex().toString() }
+                assert entry.baseTextSha256 == digest(localized[language][key]) : "Stale platform base text: ${language}/${key}"
+                assert entry.text instanceof String && entry.text.trim() && entry.text.split('\\n', -1).every { it.trim() } : "Empty platform text: ${language}/${key}"
+                assert entry.roles instanceof List && entry.roles.size() == entry.text.split('\\n', -1).length && entry.roles.every { it in ['NORMAL', 'WARNING', 'HINT'] } : "Invalid platform roles: ${language}/${key}"
+                def reviewedText = ([language, key, entry.text] + entry.roles).join('\u0000') + '\u0000'
+                assert entry._review_hash == digest(reviewedText) : "Stale platform text/role review: ${language}/${key}"
+                assert placeholders(entry.text) == placeholders(localized[language][key]) : "Wrong platform placeholders: ${language}/${key}"
+                if (captionStyles[language].containsKey(key)) {
+                    captionStyles[language][key] = entry.roles
+                } else {
+                    def description = descriptions.find { key == "ae2ponder.description.${it.id}".toString() }
+                    assert description != null : "Only captions/descriptions may have platform overrides: ${key}"
+                    def expectedRoles = description.tones ?: Collections.nCopies(entry.roles.size(), description.tone ?: 'NORMAL')
+                    assert entry.roles == expectedRoles : "Platform description roles disagree with shared metadata: ${language}/${key}"
+                }
+                localized[language][key] = entry.text
+            }
+        }
+    }
+    // Validate everything before replacing the previous generated resources.
+    def targetPath = destination.canonicalFile.toPath()
+    def generatedPath = layout.buildDirectory.dir('generated').get().asFile.canonicalFile.toPath()
+    assert generatedPath.startsWith(projectDir.canonicalFile.toPath()) && targetPath.startsWith(generatedPath)
+        && targetPath != generatedPath : 'Generated resource directory must stay inside the project build directory'
+    delete(destination)
+    write('assets/ae2ponder/guide/languages.json', JsonOutput.prettyPrint(JsonOutput.toJson(languages)) + '\n')
+    write('assets/ae2ponder/guide/caption_styles.json', JsonOutput.prettyPrint(JsonOutput.toJson(captionStyles)) + '\n')
+    localized.each { language, strings ->
+        def own = strings.findAll { key, value -> key.startsWith('ae2ponder.') }
+        def ponder = strings.findAll { key, value -> key.startsWith('ponder.') || key == 'key.ponder.ponder' || key == 'key.categories.ponder' }
+        def guideMe = strings.findAll { key, value -> key.startsWith('guideme.') || key.startsWith('item.guideme.') || key.startsWith('key.guideme.') }
+        assert own.size() + ponder.size() + guideMe.size() == strings.size() : "Unassigned translation namespace in ${language}"
+        write("assets/ae2ponder/lang/${language}.json", JsonOutput.prettyPrint(JsonOutput.toJson(own)) + '\n')
+        write("assets/ponder/lang/${language}.json", JsonOutput.prettyPrint(JsonOutput.toJson(ponder)) + '\n')
+        write("assets/guideme/lang/${language}.json", JsonOutput.prettyPrint(JsonOutput.toJson(guideMe)) + '\n')
+        def page = new StringBuilder('---\nnavigation:\n  title: Ponder\n  icon: ae2:fluix_crystal\n  position: 15\n---\n\n')
+        def text = { key -> escape(strings["ae2ponder.guide.${key}"]) }
+        def prose = { key -> normalText(strings["ae2ponder.guide.${key}"]) }
+        page.append('# ').append(text('heading')).append('\n\n').append(prose('intro')).append('\n\n')
+        page.append('<CommandLink command="/ae2ponder lesson ').append(lessons.first().id).append('">')
+            .append(text('start')).append('</CommandLink>\n\n')
+        page.append('## ').append(text('how_to')).append('\n\n').append(prose('controls')).append('\n\n').append(prose('description')).append('\n\n')
+        lessons.groupBy { it.chapter }.each { chapter, chapterLessons ->
+            def conditions = chapterLessons.collect { (it.requiresMods ?: []).join(',') }.toSet()
+            assert conditions.size() == 1 : "Lessons in a chapter must share one availability condition: ${chapter}"
+            def mods = chapterLessons.first().requiresMods ?: []
+            if (mods) page.append('<ae2ponder:IfModLoaded mods="').append(mods.join(',')).append('">\n\n')
+            page.append('## ').append(escape(strings["ae2ponder.chapter.${chapter}"])).append('\n\n')
+            page.append(normalText(strings["ae2ponder.ponder.tag.${chapter}.description"])).append('\n\n')
+            chapterLessons.each { lesson ->
+                page.append('- <CommandLink command="/ae2ponder lesson ').append(lesson.id).append('">')
+                    .append(escape(strings["ae2ponder.ponder.${lesson.id}.header"])).append('</CommandLink> — ')
+                    .append(normalText(strings["ae2ponder.lesson.${lesson.id}.summary"])).append('\n')
+            }
+            // Keep chapter lessons, links and search terms behind the same optional-mod guard.
+            page.append('\n<ae2ponder:SearchTerms>\n\n')
+            chapterLessons.each { lesson ->
+                lesson.steps.eachWithIndex { step, index ->
+                    page.append(escape(captionSearchText(strings["ae2ponder.ponder.shared.${lesson.id}_${index}"]))).append('\n\n')
+                }
+            }
+            page.append('</ae2ponder:SearchTerms>\n\n')
+            if (mods) page.append('</ae2ponder:IfModLoaded>\n\n')
+        }
+        def generatedPage = page.toString()
+        def addonChapterIds = ['ae2omnicells', 'bigger_ae2', 'ae2things', 'ae2_mega_things']
+        addonChapterIds.each { addon ->
+            def addonLessons = lessons.findAll { it.chapter == addon }
+            assert !addonLessons.isEmpty() : "Missing dedicated add-on chapter: ${language}/${addon}"
+            def conditions = addonLessons.collect { (it.requiresMods ?: []).join(',') }.toSet()
+            assert conditions.size() == 1 && conditions.first() : "Add-on chapter has inconsistent guards: ${language}/${addon}"
+            def guard = '<ae2ponder:IfModLoaded mods="' + conditions.first() + '">'
+            def start = generatedPage.indexOf(guard)
+            def end = start < 0 ? -1 : generatedPage.indexOf('</ae2ponder:IfModLoaded>', start)
+            assert start >= 0 && end > start && generatedPage.indexOf(guard, start + guard.length()) < 0 :
+                "Dedicated add-on chapter is missing or duplicated: ${language}/${addon}"
+            def section = generatedPage.substring(start, end)
+            def chapterTitle = '## ' + escape(strings["ae2ponder.chapter.${addon}"])
+            def chapterDescription = escape(strings["ae2ponder.ponder.tag.${addon}.description"])
+            assert section.contains(chapterTitle) && section.contains(chapterDescription) :
+                "Dedicated add-on heading/description escaped its availability guard: ${language}/${addon}"
+            addonLessons.each { lesson ->
+                def command = '/ae2ponder lesson ' + lesson.id
+                def lessonTitle = escape(strings["ae2ponder.ponder.${lesson.id}.header"])
+                def lessonSummary = normalText(strings["ae2ponder.lesson.${lesson.id}.summary"])
+                assert section.contains(command) && section.contains(lessonTitle) && section.contains(lessonSummary) :
+                    "Add-on lesson link or summary escaped its availability guard: ${language}/${lesson.id}"
+                lesson.steps.eachWithIndex { step, index ->
+                    def searchTerm = escape(captionSearchText(strings["ae2ponder.ponder.shared.${lesson.id}_${index}"]))
+                    assert section.contains(searchTerm) :
+                        "Add-on search term escaped its availability guard: ${language}/${lesson.id}/${index}"
+                }
+            }
+            assert section.contains('<ae2ponder:SearchTerms>') && section.contains('</ae2ponder:SearchTerms>') :
+                "Add-on search terms are missing from their guarded chapter: ${language}/${addon}"
+        }
+        assert !lessons.any { it.chapter == 'addons' } : 'The aggregate add-on chapter must not be generated'
+        assert !generatedPage.contains('## ' + escape(strings['ae2ponder.chapter.addons'])) :
+            "The legacy aggregate add-on heading must not be generated: ${language}"
+        def folder = language == 'en_us' ? '' : "_${language}/"
+        write("assets/ae2ponder/ae2guide/${folder}ponder.md", generatedPage)
+    }
+    logger.lifecycle("Generated ${languages.size()} languages with ${expected.size()} strings and localized ME Guide pages; checked source freshness and placeholders")
+}

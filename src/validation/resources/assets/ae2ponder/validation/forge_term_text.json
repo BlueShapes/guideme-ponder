@@ -1,0 +1,18 @@
+{
+  "platform": "forge",
+  "locales": {
+    "fr_fr": [
+      "ae2ponder.ponder.shared.meteorite_0"
+    ],
+    "ro_ro": [
+      "ae2ponder.ponder.shared.meteorite_0"
+    ],
+    "ko_kr": [
+      "ae2ponder.ponder.shared.meteorite_0"
+    ],
+    "tr_tr": [
+      "ae2ponder.ponder.shared.meteorite_0",
+      "ae2ponder.description.certus_block"
+    ]
+  }
+}

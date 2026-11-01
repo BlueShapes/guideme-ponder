@@ -1,0 +1,105 @@
+# 第二言語範囲20ロケールの共通要件確認 — 2026-10-30
+
+第一・第二言語範囲の22言語を維持し、共通要件1〜75を確認しました。下記の成功・過去証拠の再利用・条件付き範囲を区別します。日英と20ロケールの記録は同じ最終JARへ結び付いています。
+
+## 今回の修正
+
+- 日本語の「神秘的なキューブ」「ケルタスクォーツの水晶」「OMNIリンク」の正式名を対象版の言語資産へ合わせました。他言語の同じ対象も照合し、公式訳がない場合は英語名と翻訳案を区別しました。
+- 専用セル・収納バスの優先度を高く**設定する**操作を説明し、最初から高いという固定の性質へ変えない表現にしました。
+- 加速で電力不足や出力詰まりを解消できない説明を全22言語で警告へ揃えました。AR/ID/KO/MS/TR/VIの対処助言は、この失敗条件が明確になるよう推敲しました。
+- 長い名称の併記は自然な節と対応した「…」で制作時に区切り、数値・条件・同一性を保持しました。本番Java、模型、登録、教材順は前回と同一です。
+
+## 構造・意味・表示・検索
+
+各言語566キー、56題名・56要約、280字幕キー、70短文定義、11章ラベル（10有効章と旧別名）、展開ヒント、標準Ponder/GuideME操作を照合しました。原本・両版生成物・完成JARの3名前空間と22ガイドページが一致します。欠落・空欄・プレースホルダ不一致・古いレビュー印・キー露出・意図しない長文英語コピーは検出0です。英語の正式名等は翻訳漏れと区別しています。
+
+| 言語 | 字幕表示単位 | 変更本文キー | 初回の字幕計測単位（各版） | Shift展開（各版） |
+| --- | ---: | ---: | ---: | ---: |
+| hi_in | 715 | 6 | 16 | 1 |
+| zh_hk | 631 | 6 | 16 | 1 |
+| zh_tw | 631 | 5 | 16 | 1 |
+| zh_cn | 627 | 6 | 12 | 1 |
+| ru_ru | 703 | 5 | 12 | 1 |
+| pt_br | 684 | 5 | 12 | 1 |
+| pt_pt | 688 | 6 | 16 | 1 |
+| es_es | 678 | 5 | 12 | 1 |
+| fr_fr | 676 | 5 | 12 | 1 |
+| de_de | 672 | 6 | 12 | 1 |
+| cs_cz | 692 | 5 | 12 | 1 |
+| pl_pl | 689 | 5 | 14 | 1 |
+| ms_my | 665 | 6 | 14 | 1 |
+| ro_ro | 699 | 5 | 13 | 1 |
+| ar_sa | 669 | 6 | 12 | 1 |
+| id_id | 660 | 6 | 13 | 1 |
+| ko_kr | 645 | 4 | 12 | 1 |
+| vi_vn | 652 | 6 | 13 | 1 |
+| tr_tr | 676 | 6 | 13 | 1 |
+| it_it | 679 | 5 | 13 | 1 |
+
+初回は両版で6キー×22言語=132件、字幕287単位、110全文索引、287単位検索、22Shift展開に成功しました。Forgeの5組は今回の版別原稿へ変わったため、その旧結果は未変更127組だけへ限定して再利用します。差分5組は下記の追加検証で確認し、NeoForgeや全22言語、W・模型は再実行していません。
+
+各言語の通常説明、条件と結果、警告、ヒント、用語、任意アドオン等の具体的な本文と判断は、同名JSONの`perLocale.currentSemanticExamples`にあります。変更6キーは独立レビューし、意味・対応する継続・4結晶の往復・OMNIの3金型とAE2の4プレス/材料を確認しました。全566キーを今回新規に意味精読したものではありません。
+
+### 内容レビューの例
+
+- **hi_in** — `ae2ponder.ponder.shared.cable_colors_3`: अलग रखने वाले फलक पर एंकर लगाएँ → यह केवल उस फलक का कनेक्शन रोकता है → एक ही रंग की केबलें भी अलग रहती हैं
+- **zh_hk** — `ae2ponder.ponder.shared.cable_colors_3`: 請在需要隔離的一面裝上纜線錨 → 它會阻止該面的連接 → 即使同色纜線也會在此處分開
+- **zh_tw** — `ae2ponder.ponder.shared.cable_colors_3`: 請在需要隔離的一面裝上纜線錨 → 它會阻止該面的連接 → 即使同色纜線也會在此處分開
+- **zh_cn** — `ae2ponder.ponder.shared.cable_colors_3`: 请在需要隔离的一面装上线缆锚 → 它会阻止该面的连接 → 即使同色线缆也会在此处分开
+- **ru_ru** — `ae2ponder.ponder.shared.cable_colors_3`: Якорь ставят на изолируемую грань → Он блокирует только эту грань → Разделятся даже кабели одного цвета
+- **pt_br** — `ae2ponder.ponder.shared.cable_colors_3`: Uma âncora fica na face a isolar → Bloqueia apenas a conexão dessa face → Até cabos da mesma cor ficam separados ali
+- **pt_pt** — `ae2ponder.ponder.shared.cable_colors_3`: Uma âncora fica na face a isolar → Bloqueia apenas a ligação dessa face → Até cabos da mesma cor ficam separados ali
+- **es_es** — `ae2ponder.ponder.shared.cable_colors_3`: El anclaje se coloca en la cara que debe quedar aislada → Solo bloquea la conexión de esa cara → Incluso los cables del mismo color quedan separados
+- **fr_fr** — `ae2ponder.ponder.shared.cable_colors_3`: Une ancre se place sur la face à isoler → Elle ne bloque que la connexion de cette face → Même les câbles de même couleur y restent séparés
+- **de_de** — `ae2ponder.ponder.shared.cable_colors_3`: Ein Anker sitzt auf der zu isolierenden Seite → Er blockiert nur die Verbindung dieser Seite → Auch gleichfarbige Kabel bleiben dort getrennt
+- **cs_cz** — `ae2ponder.ponder.shared.cable_colors_3`: Kotva se umístí na stěnu, která má být izolovaná → Zablokuje pouze tuto stěnu → Oddělí i kabely stejné barvy
+- **pl_pl** — `ae2ponder.ponder.shared.cable_colors_3`: Kotwę umieszcza się na izolowanej ścianie → Blokuje tylko tę ścianę → Rozdzieli nawet kable tego samego koloru
+- **ms_my** — `ae2ponder.ponder.shared.cable_colors_3`: Pasang sauh pada muka yang hendak diasingkan → Sauh menyekat sambungan melalui muka itu → Kabel sama warna juga kekal terpisah di situ
+- **ro_ro** — `ae2ponder.ponder.shared.cable_colors_3`: Ancora se montează pe fața care trebuie izolată → Blochează doar acea față → Separă chiar și cablurile de aceeași culoare
+- **ar_sa** — `ae2ponder.ponder.shared.cable_colors_3`: ثبّت مرساة كابل على الوجه الذي تريد عزله → تمنع الاتصال عبر ذلك الوجه → تبقى الكابلات منفصلة هناك حتى إن تماثلت ألوانها
+- **id_id** — `ae2ponder.ponder.shared.cable_colors_3`: Pasang jangkar pada sisi yang ingin dipisahkan → Jangkar memblokir koneksi melalui sisi itu → Kabel berwarna sama pun tetap terpisah di sana
+- **ko_kr** — `ae2ponder.ponder.shared.cable_colors_3`: 분리할 면에 앵커를 부착하세요 → 그 면을 통한 연결을 차단합니다 → 같은 색의 케이블도 이 면에서 분리됩니다
+- **vi_vn** — `ae2ponder.ponder.shared.cable_colors_3`: Gắn neo vào mặt cần cách ly → Neo chặn kết nối qua mặt đó → Ngay cả cáp cùng màu cũng tách rời ở đây
+- **tr_tr** — `ae2ponder.ponder.shared.cable_colors_3`: Ayırmak istediğiniz yüze ankraj takın → Yalnızca o yüzde bağlantıyı engeller → Aynı renkteki kabloları bile ayırır
+- **it_it** — `ae2ponder.ponder.shared.cable_colors_3`: Un ancoraggio occupa la faccia da isolare → Blocca solo il collegamento di quella faccia → Anche cavi dello stesso colore restano separati
+
+香港/台湾、ブラジル/ポルトガルを別々に確認しています。既存の呼びかけ方・語彙を保ち、地域差を人工的に増やしていません。アラビア語は論理順の本文を索引へ渡し、描画時の整形と分けています。
+
+## 再利用と条件付き範囲
+
+旧ネイティブ計測14,499単位から、現在の本文と作者境界が一致する14,278単位を抽出し、言語別の部分集合SHAを保存しました。折返し・RTL・字幕配置の6クラスは旧実測JARとバイト一致です。前回の新規73キーについても、現在一致するキーと再確認が必要なキーを別に記録しました。
+
+実レジストリ・115件の標準W、85ケーブル、代表カテゴリー/戻る・スタッフ状態/Replayの前回成功結果は、変更していない登録・本番クラス・模型の範囲へ限定して再利用しました。Forgeの前回アドオンなし352本体IDの確認を、今回のアドオンなし再起動と取り違えません。今回の起動は両版とも通常アドオン入りです。
+
+共通要件の条件付き番号は **7, 14, 15, 31, 32, 33, 36, 43, 53** です。他の番号も根拠付きの範囲内での判定であり、全条件の網羅試験という意味ではありません。各番号の状態・根拠はJSONの`requirements`、証拠パスとSHAは`evidence`を参照してください。
+
+- 全566キーを今回すべて新規の意味レビューとして読み直したとは扱わない。全キー構造検査、変更6キーの独立意味レビュー、20言語の具体例、入力一致した過去レビューを区別する
+- 全レジストリの全正式名称・全56教材全ステップの新規再描画、全W操作の再実行をしたものではない
+- 把握済みのForge正式訳欠落5組は、英語名と明示した翻訳案をForgeの初出へ併記して修正済み。要件14/15の条件付き範囲は、全レジストリ全表示名を新規網羅監査していない部分であり、既知5組を免除する意味ではない
+- 今回の限定検証は文字列の役割/標準palette対応と実フォント/検索を確認する。実字幕3色の画面画像・配置/UI/模型の証拠は変わらないコードと該当データに対する過去成功結果を再利用する
+- NFC/NFDの合成/結合文字検索、トルコ語の大小文字変形を別途入力する追加回帰試験は未実施。トルコ語/アラビア語は固定GuideMEの各言語Analyzerを利用し実原文の検索を確認した
+- 開発実行のGuideME Maven21.1.19/20.1.15と、Prism内の同版配布物のSHAは区別する。Forgeは名前付き開発変換JARも記録する。指定Prismの全8解説MOD同時起動は未実施
+- 専用サーバー実起動、ガイド未導入リモートサーバーへの実接続は未実施。client-only構成の静的確認とは区別する
+
+## 完成JARと配置
+
+| 版 | 完成JAR | SHA-256 |
+| --- | --- | --- |
+| 1.21.1 NeoForge / Java21 | `~\dev\minecraft\mods\ponder-series\guideme-ponder\build\libs\ae2-ponder-guide-0.1.0-beta2.jar` | `3fffca399cf685eb0cf3c1867108f2370b53e208a96d6c6ca4eed5acc42f9cd8` |
+| 1.20.1 Forge / Java17 | `~\dev\minecraft\mods\ponder-series\guideme-ponder\build\forge\libs\ae2-ponder-guide-0.1.0-beta2-forge-1.20.1.jar` | `04b10bc379d5038e25474287a2164dba3fc95ce7923767cc683134a7bb27ae14` |
+
+指定Prismの1.21.1/NeoForgeへNeoForge主JARだけを配置しました。配置後SHAは完成物と一致し、同MOD IDの不要旧コピーは0です。他MOD・`.index`等78ファイルは置換の直前直後で不変、依存10件を再利用しました。基準は79ファイル（直下47＋`.index`32、解説8件）です。旧JARの証拠はテスト環境の外へ保存し、環境内へ改名・無効化・バックアップして残していません。反映は次回のMinecraft起動からです。
+
+両検証クライアントとrunnerは自己終了し、残存0を確認しました。初期からの`AGENTS.md`と制作ノートの未コミット変更は内容を変えず、今回のステージ対象から除外します。設定済みSSH署名のローカルコミットを作成し、pushしません。
+
+機械可読の詳しい記録: [second-scope-compliance-20261030.json](second-scope-compliance-20261030.json)。入力・実行ログ・再利用の部分集合・配置前後の証拠は`.local/jaen-compliance-20261030/`にあります。
+
+## Forgeの既知5件を修正した追補
+
+Forge15.4.11で公式訳が欠けるFR/RO/KO/TRのMysterious Cube、TRのCertus Quartz Crystalは、既知修正済みです。`src/forge/translations/text_overrides.json`に初出の英語名・明示した翻訳案・作者単位・役割を置き、既存の言語/色/GuideME検索生成へ適用します。NeoForgeの正式訳、共通22言語の原本、初出後の短い現地名は保持しました。全表示名の未網羅という残りの条件と、この5件の修正完了を分けています。
+
+版別原稿は共通原文SHA、置換元本文SHA、本文と役割のレビューSHAで鮮度を検査します。生成物の手修正や別の言語JSONコピーを原本として管理しません。追加した6単体検査と既存の16ローカライズ検査、Forgeビルドが成功しました。
+
+今回の非表示実行は4ロケールの5組だけです。字幕12単位を180pxで測定して超過0、4全文索引・12単位検索・TRのShift説明1展開が成功し、56実行入力SHAを完成ForgeJARへ結び付けました。NeoForge、全22言語、W・スタッフ模型・旧UIは再実行していません。
+
+ForgeJARの変更は4言語JSON・4ガイドページ・役割JSONの9エントリーだけで、本番43クラスや模型/登録/メタデータ/ライセンス等は前の完成JARとバイト一致です。最終Forge SHA-256は`04b10bc379d5038e25474287a2164dba3fc95ce7923767cc683134a7bb27ae14`です。NeoForge JARと指定Prism配置は`3fffca399cf685eb0cf3c1867108f2370b53e208a96d6c6ca4eed5acc42f9cd8`のままで、再配置は不要でした。読取再確認で同MODの不要旧コピー0、検証プロセス残存0です。詳しい5組の本文・判断・生成/JAR差分・限定成功結果はJSONの`forgeTerminologyFollowup`にあります。

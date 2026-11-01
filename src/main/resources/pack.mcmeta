@@ -1,0 +1,7 @@
+{
+  "pack": {
+    "description": { "translate": "ae2ponder.title" },
+    "pack_format": ${packFormat},
+    "supported_formats": [${packFormat}, ${dataPackFormat}]
+  }
+}

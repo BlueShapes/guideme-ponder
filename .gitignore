@@ -1,0 +1,12 @@
+.gradle/
+build/
+run/
+out/
+.idea/
+*.iml
+.research/
+.local/
+libs/
+*.log
+__pycache__/
+*.pyc

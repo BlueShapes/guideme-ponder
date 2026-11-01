@@ -1,0 +1,1235 @@
+{
+  "_caption_hash": "63ed810f571fa032cf9bac6083dd3ea1897eae7f577e0e5dcb84a12bfd90aca8",
+  "ae2ponder.ponder.shared.bigger_crafting_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_crafting_1": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_crafting_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.bigger_crafting_3": [
+    "NORMAL",
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_crafting_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_fluids_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_fluids_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_fluids_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_fluids_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_fluids_4": [
+    "WARNING",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_items_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_items_1": [
+    "NORMAL",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_items_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_items_3": [
+    "NORMAL",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.bigger_quantum_items_4": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_singularity_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bigger_singularity_1": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.bigger_singularity_2": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.bigger_singularity_3": [
+    "NORMAL",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.bigger_singularity_4": [
+    "WARNING",
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bytes_types_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bytes_types_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bytes_types_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bytes_types_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.bytes_types_4": [
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.cable_colors_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cable_colors_1": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.cable_colors_2": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cable_colors_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cable_colors_4": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cell_io_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cell_io_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cell_io_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.cell_io_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.cell_io_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.certus_factory_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_factory_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_factory_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_factory_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_factory_4": [
+    "NORMAL",
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.certus_growth_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_growth_1": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_growth_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.certus_growth_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.certus_growth_4": [
+    "WARNING",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.charged_fluix_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_fluix_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_fluix_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_fluix_3": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.charged_fluix_4": [
+    "NORMAL",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.condenser_overflow_0": [
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.condenser_overflow_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.condenser_overflow_2": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.condenser_overflow_3": [
+    "WARNING",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.condenser_overflow_4": [
+    "HINT",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.controller_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.controller_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.controller_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.controller_3": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.controller_4": [
+    "WARNING",
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_basics_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_basics_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_basics_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_basics_3": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.crafting_basics_4": [
+    "NORMAL",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.crafting_control_0": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.crafting_control_1": [
+    "HINT",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_control_2": [
+    "WARNING",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.crafting_control_3": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.crafting_control_4": [
+    "HINT",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_cpu_0": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.crafting_cpu_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_cpu_2": [
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.crafting_cpu_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_cpu_4": [
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.crafting_parallel_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_parallel_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_parallel_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_parallel_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.crafting_parallel_4": [
+    "NORMAL",
+    "NORMAL",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.dense_branching_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.dense_branching_1": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.dense_branching_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.dense_branching_3": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.dense_branching_4": [
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.diagnostics_0": [
+    "HINT",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.diagnostics_1": [
+    "HINT",
+    "NORMAL",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.diagnostics_2": [
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.diagnostics_3": [
+    "HINT",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.diagnostics_4": [
+    "HINT",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.drive_status_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.drive_status_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.drive_status_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.drive_status_3": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.drive_status_4": [
+    "HINT",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.eight_channels_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.eight_channels_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.eight_channels_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.eight_channels_3": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.eight_channels_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.energy_buffer_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.energy_buffer_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.energy_buffer_2": [
+    "NORMAL",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.energy_buffer_3": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.energy_buffer_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.external_storage_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.external_storage_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.external_storage_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.external_storage_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.external_storage_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.first_network_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.first_network_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.first_network_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.first_network_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.first_network_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.fluids_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.fluids_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.fluids_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.fluids_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.fluids_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.growth_power_0": [
+    "NORMAL",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.growth_power_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.growth_power_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.growth_power_3": [
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.growth_power_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.import_export_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.import_export_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.import_export_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.import_export_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.import_export_4": [
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.inscriber_automation_0": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.inscriber_automation_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.inscriber_automation_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.inscriber_automation_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.inscriber_automation_4": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.interface_stock_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.interface_stock_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.interface_stock_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.interface_stock_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.interface_stock_4": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.level_control_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.level_control_1": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.level_control_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.level_control_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.level_control_4": [
+    "NORMAL",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.mega_disk_reuse_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_disk_reuse_1": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.mega_disk_reuse_2": [
+    "HINT",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_disk_reuse_3": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_disk_reuse_4": [
+    "HINT",
+    "HINT",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.mega_fluid_disks_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_fluid_disks_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_fluid_disks_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_fluid_disks_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_fluid_disks_4": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.mega_item_disks_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_item_disks_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_item_disks_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_item_disks_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.mega_item_disks_4": [
+    "WARNING",
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.meteorite_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.meteorite_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.meteorite_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.meteorite_3": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.meteorite_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.network_connections_0": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.network_connections_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.network_connections_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.network_connections_3": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.network_connections_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_cells_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_cells_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_cells_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_cells_3": [
+    "WARNING",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.omni_cells_4": [
+    "WARNING",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.omni_crafting_0": [
+    "WARNING",
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_crafting_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_crafting_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_crafting_3": [
+    "NORMAL",
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.omni_crafting_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.omni_materials_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_materials_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_materials_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_materials_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_materials_4": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_portable_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_portable_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_portable_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_portable_3": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_portable_4": [
+    "NORMAL",
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.omni_type_filter_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_type_filter_1": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.omni_type_filter_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_type_filter_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.omni_type_filter_4": [
+    "WARNING",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_channels_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_channels_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_channels_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_channels_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_channels_4": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.p2p_resources_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_resources_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_resources_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.p2p_resources_3": [
+    "WARNING",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.p2p_resources_4": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.partition_priority_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.partition_priority_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.partition_priority_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.partition_priority_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.partition_priority_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.portable_wireless_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.portable_wireless_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.portable_wireless_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.portable_wireless_3": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.portable_wireless_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processing_patterns_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processing_patterns_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processing_patterns_2": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.processing_patterns_3": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.processing_patterns_4": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.processors_0": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.processors_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processors_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processors_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.processors_4": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.quantum_bridge_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.quantum_bridge_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.quantum_bridge_2": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.quantum_bridge_3": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.quantum_bridge_4": [
+    "NORMAL",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.spatial_io_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.spatial_io_1": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.spatial_io_2": [
+    "WARNING",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.spatial_io_3": [
+    "NORMAL",
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.spatial_io_4": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.spatial_safety_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.spatial_safety_1": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.spatial_safety_2": [
+    "WARNING",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.spatial_safety_3": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.spatial_safety_4": [
+    "WARNING",
+    "HINT",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.storage_subnet_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.storage_subnet_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.storage_subnet_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.storage_subnet_3": [
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.storage_subnet_4": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.subnets_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.subnets_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.subnets_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.subnets_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.subnets_4": [
+    "WARNING",
+    "WARNING",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.things_disks_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_disks_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_disks_2": [
+    "NORMAL",
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.things_disks_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_disks_4": [
+    "HINT",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.things_filtering_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_filtering_1": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.things_filtering_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_filtering_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_filtering_4": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_reuse_0": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_reuse_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_reuse_2": [
+    "WARNING",
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.things_reuse_3": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.things_reuse_4": [
+    "NORMAL",
+    "HINT",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.upgrade_cards_0": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.upgrade_cards_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.upgrade_cards_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.upgrade_cards_3": [
+    "NORMAL",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.upgrade_cards_4": [
+    "NORMAL",
+    "HINT"
+  ],
+  "ae2ponder.ponder.shared.world_planes_0": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.world_planes_1": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.world_planes_2": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.world_planes_3": [
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.world_planes_4": [
+    "WARNING",
+    "WARNING"
+  ],
+  "ae2ponder.ponder.shared.charged_staff_0": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_staff_1": [
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_staff_2": [
+    "NORMAL",
+    "NORMAL",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_staff_3": [
+    "WARNING",
+    "NORMAL"
+  ],
+  "ae2ponder.ponder.shared.charged_staff_4": [
+    "HINT",
+    "NORMAL"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "_source_hash": "9c0682b548f40f593064750d506cc31b8724d6a5f4e89161882f8dc658dbbe33",
+  "locales": {
+    "fr_fr": {
+      "ae2ponder.ponder.shared.meteorite_0": {
+        "baseTextSha256": "4aeb1335f33fea2ecdbbae6b6605e7ad1008de4b67295240086f23b0cfa87f90",
+        "text": "La boussole à météorites repère un Mysterious Cube proche…\n…dont la traduction proposée est « Cube Mystérieux »\nUn « Cube Mystérieux » se trouve au centre de la météorite",
+        "roles": [
+          "NORMAL",
+          "NORMAL",
+          "NORMAL"
+        ],
+        "_review_hash": "b35756e73c4d9ae0f0e205f3ab9c8669b38ff31e9437596b18eeefef6835135c"
+      }
+    },
+    "ro_ro": {
+      "ae2ponder.ponder.shared.meteorite_0": {
+        "baseTextSha256": "d388209955109b31b3187fc4b129f3bc67f6bf0e4cac1a4a09853f7d0be1b39f",
+        "text": "Busola pentru meteoriți indică un Mysterious Cube apropiat…\n…pentru care propunem numele „Cub Misterios”\nUn Cub Misterios se află în centrul meteoritului",
+        "roles": [
+          "NORMAL",
+          "NORMAL",
+          "NORMAL"
+        ],
+        "_review_hash": "c1342d561d463200bd9924411ce2d95797154221dfb5ea74c282924a5c6f166b"
+      }
+    },
+    "ko_kr": {
+      "ae2ponder.ponder.shared.meteorite_0": {
+        "baseTextSha256": "b22d2c338bd87d2f036067e78fd7be9019fcc4bdc7b7449869b75715a8723be5",
+        "text": "운석 나침반은 근처의 Mysterious Cube를 가리키며…\n…이 이름의 번역안은 ‘신비한 큐브’입니다\n신비한 큐브는 운석 중심에 있습니다",
+        "roles": [
+          "NORMAL",
+          "NORMAL",
+          "NORMAL"
+        ],
+        "_review_hash": "44870231bee28215c4936d9251264383565307291017ff926729bc7ace7cbc7a"
+      }
+    },
+    "tr_tr": {
+      "ae2ponder.ponder.shared.meteorite_0": {
+        "baseTextSha256": "4aa903e4c8e6350dfb9b6456b25f45780456dbf7fc42295b301030ea9b9f887b",
+        "text": "Meteor pusulası yakında bir Mysterious Cube bulur…\n…ve bu ad için “Gizemli Küp” çevirisi önerilir\nGizemli Küp meteorun merkezinde bulunur",
+        "roles": [
+          "NORMAL",
+          "NORMAL",
+          "NORMAL"
+        ],
+        "_review_hash": "bb04a389f0fa7c6a1f821ab6cfd8e34e1f63a8aa8260529d0bb1850053f22d28"
+      },
+      "ae2ponder.description.certus_block": {
+        "baseTextSha256": "6c74f1dd5c2c4b0e06f4db665092c2e7843db44184c793fa539b5931ca88dc2e",
+        "text": "Bu blok, Certus Quartz Crystal adlı dört kristali birleştirir\nBu ad için “Sertus Kuvars Kristali” çevirisi önerilir\nTekrar işlenince dört kristal geri verir\nYapı ve dekorasyonda da kullanılır",
+        "roles": [
+          "NORMAL",
+          "NORMAL",
+          "NORMAL",
+          "NORMAL"
+        ],
+        "_review_hash": "b4c14bc91632ff0e2973ccfe62ec35dc64aa19605f50dbc851bc5e4f90540e56"
+      }
+    }
+  }
+}

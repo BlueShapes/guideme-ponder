@@ -1,0 +1,4049 @@
+[
+  {
+    "id": "omni_materials",
+    "chapter": "ae2omnicells",
+    "requiresMods": [
+      "ae2omnicells"
+    ],
+    "title": {
+      "ja": "OMNIの新しいプロセッサーを作る",
+      "en": "Making OMNI processors"
+    },
+    "summary": {
+      "ja": "エンダースチールからプレス・回路・プロセッサができます",
+      "en": "Ender Steel, presses, circuits, and processors build OMNI systems"
+    },
+    "icon": "ae2omnicells:omni_link_processor",
+    "steps": [
+      {
+        "text": {
+          "ja": "鉄インゴットはインスクライバーの中央枠に入ります\n上段にエンダー粉、下段にケルタスの粉を置きます\n圧印するとエンダースチールになります",
+          "en": "An iron ingot goes in the inscriber’s center slot\nEnder dust goes above; certus quartz dust goes below\nPress them to make Ender Steel"
+        },
+        "show": [
+          "machine",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "focus": [
+          "machine"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:iron_ingot",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2:ender_dust",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2:certus_quartz_dust",
+            "anchor": "machine"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "エンダースチールをAE2充電器で帯電させます\n帯電したエンダースチールになります",
+          "en": "An AE2 charger converts Ender Steel into its charged form\nIt becomes Charged Ender Steel"
+        },
+        "show": [
+          "charger"
+        ],
+        "focus": [
+          "charger"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:ender_ingot",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2omnicells:charged_ender_ingot",
+            "anchor": "charger"
+          }
+        ],
+        "flow": {
+          "from": "machine",
+          "to": "charger",
+          "item": "ae2omnicells:ender_ingot"
+        }
+      },
+      {
+        "text": {
+          "ja": "OMNIリンクと複合リンクの金型を作ります\n多次元展開の金型も作ります\nOMNIの金型はAE2の4枚のプレスと指定材料から作れます",
+          "en": "Make the Omni Link and Complex Link presses\nAlso make the Multidimensional Expansion press\nOMNI press recipes use AE2's four presses and required materials"
+        },
+        "show": [
+          "bench"
+        ],
+        "focus": [
+          "bench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_link_print_press",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2omnicells:complex_link_print_press",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2omnicells:multidimensional_expansion_print_press",
+            "anchor": "bench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "エンダースチール・ネザライトの欠片・特異点を材料にします\n対応するプレスが材料ごとの回路を印刷します",
+          "en": "Each circuit uses Ender Steel, netherite scrap, or a singularity\nThe matching press prints each circuit"
+        },
+        "show": [],
+        "focus": [
+          "machine",
+          "bench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_link_circuit_print",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2omnicells:complex_link_circuit_print",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2omnicells:multidimensional_expansion_circuit_print",
+            "anchor": "machine"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "印刷した回路とレッドストーンを組み合わせます\nプリントシリコンを加えるとプロセッサが完成します\nOMNIの部品や筐体の材料になります",
+          "en": "Printed circuits combine with redstone\nPrinted silicon completes each processor\nThese processors make OMNI components and housings"
+        },
+        "show": [],
+        "focus": [
+          "machine"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_link_processor",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2omnicells:complex_link_processor",
+            "anchor": "machine"
+          },
+          {
+            "item": "ae2omnicells:multidimensional_expansion_processor",
+            "anchor": "machine"
+          }
+        ]
+      }
+    ],
+    "components": [
+      "ae2omnicells:ender_ingot",
+      "ae2omnicells:ender_nugget",
+      "ae2omnicells:charged_ender_ingot",
+      "ae2omnicells:omni_link_print_press",
+      "ae2omnicells:omni_link_circuit_print",
+      "ae2omnicells:omni_link_processor",
+      "ae2omnicells:complex_link_print_press",
+      "ae2omnicells:complex_link_circuit_print",
+      "ae2omnicells:complex_link_processor",
+      "ae2omnicells:multidimensional_expansion_print_press",
+      "ae2omnicells:multidimensional_expansion_circuit_print",
+      "ae2omnicells:multidimensional_expansion_processor",
+      "ae2:inscriber",
+      "ae2:charger",
+      "ae2:logic_processor_press",
+      "ae2:calculation_processor_press",
+      "ae2:engineering_processor_press",
+      "ae2:silicon_press",
+      "ae2:ender_dust",
+      "ae2:certus_quartz_dust",
+      "ae2:printed_silicon",
+      "ae2:singularity",
+      "minecraft:iron_ingot",
+      "minecraft:netherite_scrap",
+      "minecraft:redstone"
+    ],
+    "nodes": [
+      {
+        "id": "machine",
+        "block": "ae2:inscriber",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          2,
+          1,
+          4
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          2,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "charger",
+        "block": "ae2:charger",
+        "pos": [
+          5,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "bench",
+        "block": "minecraft:crafting_table",
+        "pos": [
+          7,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "omni_cells",
+    "chapter": "ae2omnicells",
+    "requiresMods": [
+      "ae2omnicells"
+    ],
+    "title": {
+      "ja": "OMNIセルでアイテムと液体を混ぜて保存",
+      "en": "Mixed storage with OMNI cells"
+    },
+    "summary": {
+      "ja": "3系統の種類上限・容量・電力を比べます",
+      "en": "Compare three series, type limits, capacity, and power"
+    },
+    "icon": "ae2omnicells:omni_cell_1k",
+    "steps": [
+      {
+        "text": {
+          "ja": "OMNIセルをMEドライブに入れます\n1枚でアイテムと液体を保存できます\n通常のAE2では別々のセルを使います",
+          "en": "Insert an OMNI cell in an ME drive\nOne cell holds both items and fluids\nNormal AE2 uses separate cells for them"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_cell_1k",
+            "anchor": "drive"
+          },
+          {
+            "item": "minecraft:iron_ingot",
+            "anchor": "drive"
+          },
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "OMNIは最大63種類です\nComplexは1k〜256mで12〜6400種類です\nQuantumには種類上限がありません\nただしバイト容量は有限です",
+          "en": "OMNI cells allow 63 types\nComplex allows 12 to 6400 types across 1k to 256m\nQuantum has no type limit\nIts byte capacity is still finite"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_cell_1k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2omnicells:complex_omni_cell_1k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2omnicells:quantum_omni_cell_1k",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "種類ごとの追加バイト消費はありません\nアイテム8個で1バイトを使います\n液体も8000 mBで1バイトを使います\n両者で同じセル容量を共有します",
+          "en": "There is no per-type byte overhead\nEight items use one byte\n8000 mB of fluid also uses one byte\nItems and fluids share the cell's capacity"
+        },
+        "show": [
+          "tank",
+          "fluidbus"
+        ],
+        "focus": [
+          "drive",
+          "tank"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:iron_ingot",
+            "anchor": "access"
+          },
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "tank"
+          }
+        ],
+        "flow": {
+          "from": "access",
+          "to": "drive",
+          "item": "minecraft:iron_ingot"
+        }
+      },
+      {
+        "text": {
+          "ja": "Quantumセルは待機電力が大きいです\n256mのQuantumは59049 AE/tを使います\n大容量を選ぶ前に電源を確保してください",
+          "en": "Quantum cells use much more idle power\nA 256m Quantum cell uses 59049 AE/t\nSecure enough power before choosing large tiers"
+        },
+        "show": [],
+        "focus": [
+          "power",
+          "buffer",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:quantum_omni_cell_256m",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "標準では使用済み核廃棄物に専用セルが必要です\nApplied Mekanisticsも必要です\n通常のOMNIセルには保存できません",
+          "en": "By default, spent nuclear waste needs a special cell\nIt also requires Applied Mekanistics\nNormal OMNI cells cannot store spent nuclear waste"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2omnicells:omni_cell_1k",
+      "ae2omnicells:complex_omni_cell_1k",
+      "ae2omnicells:quantum_omni_cell_1k",
+      "ae2omnicells:omni_cell_4k",
+      "ae2omnicells:complex_omni_cell_4k",
+      "ae2omnicells:quantum_omni_cell_4k",
+      "ae2omnicells:omni_cell_16k",
+      "ae2omnicells:complex_omni_cell_16k",
+      "ae2omnicells:quantum_omni_cell_16k",
+      "ae2omnicells:omni_cell_64k",
+      "ae2omnicells:complex_omni_cell_64k",
+      "ae2omnicells:quantum_omni_cell_64k",
+      "ae2omnicells:omni_cell_256k",
+      "ae2omnicells:complex_omni_cell_256k",
+      "ae2omnicells:quantum_omni_cell_256k",
+      "ae2omnicells:omni_cell_1m",
+      "ae2omnicells:complex_omni_cell_1m",
+      "ae2omnicells:quantum_omni_cell_1m",
+      "ae2omnicells:omni_cell_4m",
+      "ae2omnicells:complex_omni_cell_4m",
+      "ae2omnicells:quantum_omni_cell_4m",
+      "ae2omnicells:omni_cell_16m",
+      "ae2omnicells:complex_omni_cell_16m",
+      "ae2omnicells:quantum_omni_cell_16m",
+      "ae2omnicells:omni_cell_64m",
+      "ae2omnicells:complex_omni_cell_64m",
+      "ae2omnicells:quantum_omni_cell_64m",
+      "ae2omnicells:omni_cell_256m",
+      "ae2omnicells:complex_omni_cell_256m",
+      "ae2omnicells:quantum_omni_cell_256m",
+      "ae2omnicells:omni_cell_component_1k",
+      "ae2omnicells:complex_omni_cell_component_1k",
+      "ae2omnicells:quantum_omni_cell_component_1k",
+      "ae2omnicells:omni_cell_component_4k",
+      "ae2omnicells:complex_omni_cell_component_4k",
+      "ae2omnicells:quantum_omni_cell_component_4k",
+      "ae2omnicells:omni_cell_component_16k",
+      "ae2omnicells:complex_omni_cell_component_16k",
+      "ae2omnicells:quantum_omni_cell_component_16k",
+      "ae2omnicells:omni_cell_component_64k",
+      "ae2omnicells:complex_omni_cell_component_64k",
+      "ae2omnicells:quantum_omni_cell_component_64k",
+      "ae2omnicells:omni_cell_component_256k",
+      "ae2omnicells:complex_omni_cell_component_256k",
+      "ae2omnicells:quantum_omni_cell_component_256k",
+      "ae2omnicells:omni_cell_component_1m",
+      "ae2omnicells:complex_omni_cell_component_1m",
+      "ae2omnicells:quantum_omni_cell_component_1m",
+      "ae2omnicells:omni_cell_component_4m",
+      "ae2omnicells:complex_omni_cell_component_4m",
+      "ae2omnicells:quantum_omni_cell_component_4m",
+      "ae2omnicells:omni_cell_component_16m",
+      "ae2omnicells:complex_omni_cell_component_16m",
+      "ae2omnicells:quantum_omni_cell_component_16m",
+      "ae2omnicells:omni_cell_component_64m",
+      "ae2omnicells:complex_omni_cell_component_64m",
+      "ae2omnicells:quantum_omni_cell_component_64m",
+      "ae2omnicells:omni_cell_component_256m",
+      "ae2omnicells:complex_omni_cell_component_256m",
+      "ae2omnicells:quantum_omni_cell_component_256m",
+      "ae2omnicells:omni_cell_housing",
+      "ae2omnicells:complex_omni_cell_housing",
+      "ae2omnicells:quantum_omni_cell_housing",
+      "ae2omnicells:spent_nuclear_waste_cell",
+      "ae2omnicells:spent_nuclear_waste_component",
+      "ae2omnicells:spent_nuclear_waste_singularity",
+      "ae2:drive",
+      "ae2:terminal"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "tank",
+        "block": "ae2:sky_stone_tank",
+        "pos": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "fluidbus",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"south\"]}},\"north\":{\"id\":\"ae2:storage_bus\",\"visual\":{\"powered\":1b}}}"
+      }
+    ]
+  },
+  {
+    "id": "omni_portable",
+    "chapter": "ae2omnicells",
+    "requiresMods": [
+      "ae2omnicells"
+    ],
+    "title": {
+      "ja": "OMNIセルを持ち運ぶ",
+      "en": "Carrying an OMNI cell"
+    },
+    "summary": {
+      "ja": "携帯ストレージを充電し、空にしてから分解します",
+      "en": "Charge portable storage and disassemble only empty cells"
+    },
+    "icon": "ae2omnicells:portable_omni_cell_1k",
+    "steps": [
+      {
+        "text": {
+          "ja": "OMNI・Complex・Quantumの全段階に携帯版があります\n自分の混合ストレージを持ち運びます\n基地への遠隔接続ではありません",
+          "en": "Every OMNI, Complex, and Quantum tier has a portable cell\nIt carries its own mixed storage\nIt does not remotely access your base"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "bench"
+        ],
+        "focus": [
+          "bench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:portable_omni_cell_1k",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2omnicells:portable_complex_omni_cell_1k",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2omnicells:portable_quantum_omni_cell_1k",
+            "anchor": "bench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "携帯セルをAE2の充電器で充電します\n手に持って右クリックすると収納が開きます",
+          "en": "Charge the portable cell in an AE2 charger\nRight-clicking while held opens its inventory"
+        },
+        "show": [
+          "charger"
+        ],
+        "focus": [
+          "charger"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:portable_omni_cell_1k",
+            "anchor": "charger"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "エネルギーカードは電池容量を増やします\n保存バイト数や種類上限は増えません",
+          "en": "Energy cards increase the portable battery capacity\nThey do not add storage bytes or types"
+        },
+        "show": [],
+        "focus": [
+          "charger"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:energy_card",
+            "anchor": "charger"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "分解する前に全内容を別の収納へ移します\n空のセルを手に持ってスニーク右クリックすると分解できます\n材料と装着カードが戻ります",
+          "en": "The cell must be empty before disassembly; transfer its contents first\nSneak-right-clicking an empty cell in hand disassembles it\nIts recipe parts and upgrades are returned"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io",
+          "drive",
+          "bench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:portable_omni_cell_1k",
+            "anchor": "io"
+          },
+          {
+            "item": "ae2omnicells:omni_cell_component_1k",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2omnicells:omni_cell_housing",
+            "anchor": "bench"
+          }
+        ],
+        "flow": {
+          "from": "io",
+          "to": "drive",
+          "item": "minecraft:iron_ingot"
+        }
+      },
+      {
+        "text": {
+          "ja": "OMNIの中身はワールドデータに保存されます\nセルはそのデータの識別子を持ちます\nセルだけでなくワールド全体を保存してください",
+          "en": "OMNI contents are saved in world data\nThe cell carries an identifier for that data\nBack up the whole world, not just the cell item"
+        },
+        "show": [],
+        "focus": [
+          "bench",
+          "drive"
+        ],
+        "callouts": [],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2omnicells:portable_omni_cell_1k",
+      "ae2omnicells:portable_complex_omni_cell_1k",
+      "ae2omnicells:portable_quantum_omni_cell_1k",
+      "ae2omnicells:portable_omni_cell_4k",
+      "ae2omnicells:portable_complex_omni_cell_4k",
+      "ae2omnicells:portable_quantum_omni_cell_4k",
+      "ae2omnicells:portable_omni_cell_16k",
+      "ae2omnicells:portable_complex_omni_cell_16k",
+      "ae2omnicells:portable_quantum_omni_cell_16k",
+      "ae2omnicells:portable_omni_cell_64k",
+      "ae2omnicells:portable_complex_omni_cell_64k",
+      "ae2omnicells:portable_quantum_omni_cell_64k",
+      "ae2omnicells:portable_omni_cell_256k",
+      "ae2omnicells:portable_complex_omni_cell_256k",
+      "ae2omnicells:portable_quantum_omni_cell_256k",
+      "ae2omnicells:portable_omni_cell_1m",
+      "ae2omnicells:portable_complex_omni_cell_1m",
+      "ae2omnicells:portable_quantum_omni_cell_1m",
+      "ae2omnicells:portable_omni_cell_4m",
+      "ae2omnicells:portable_complex_omni_cell_4m",
+      "ae2omnicells:portable_quantum_omni_cell_4m",
+      "ae2omnicells:portable_omni_cell_16m",
+      "ae2omnicells:portable_complex_omni_cell_16m",
+      "ae2omnicells:portable_quantum_omni_cell_16m",
+      "ae2omnicells:portable_omni_cell_64m",
+      "ae2omnicells:portable_complex_omni_cell_64m",
+      "ae2omnicells:portable_quantum_omni_cell_64m",
+      "ae2omnicells:portable_omni_cell_256m",
+      "ae2omnicells:portable_complex_omni_cell_256m",
+      "ae2omnicells:portable_quantum_omni_cell_256m",
+      "ae2omnicells:omni_cell_component_1k",
+      "ae2omnicells:complex_omni_cell_component_1k",
+      "ae2omnicells:quantum_omni_cell_component_1k",
+      "ae2omnicells:omni_cell_component_4k",
+      "ae2omnicells:complex_omni_cell_component_4k",
+      "ae2omnicells:quantum_omni_cell_component_4k",
+      "ae2omnicells:omni_cell_component_16k",
+      "ae2omnicells:complex_omni_cell_component_16k",
+      "ae2omnicells:quantum_omni_cell_component_16k",
+      "ae2omnicells:omni_cell_component_64k",
+      "ae2omnicells:complex_omni_cell_component_64k",
+      "ae2omnicells:quantum_omni_cell_component_64k",
+      "ae2omnicells:omni_cell_component_256k",
+      "ae2omnicells:complex_omni_cell_component_256k",
+      "ae2omnicells:quantum_omni_cell_component_256k",
+      "ae2omnicells:omni_cell_component_1m",
+      "ae2omnicells:complex_omni_cell_component_1m",
+      "ae2omnicells:quantum_omni_cell_component_1m",
+      "ae2omnicells:omni_cell_component_4m",
+      "ae2omnicells:complex_omni_cell_component_4m",
+      "ae2omnicells:quantum_omni_cell_component_4m",
+      "ae2omnicells:omni_cell_component_16m",
+      "ae2omnicells:complex_omni_cell_component_16m",
+      "ae2omnicells:quantum_omni_cell_component_16m",
+      "ae2omnicells:omni_cell_component_64m",
+      "ae2omnicells:complex_omni_cell_component_64m",
+      "ae2omnicells:quantum_omni_cell_component_64m",
+      "ae2omnicells:omni_cell_component_256m",
+      "ae2omnicells:complex_omni_cell_component_256m",
+      "ae2omnicells:quantum_omni_cell_component_256m",
+      "ae2omnicells:omni_cell_housing",
+      "ae2omnicells:complex_omni_cell_housing",
+      "ae2omnicells:quantum_omni_cell_housing",
+      "ae2:charger",
+      "ae2:energy_card",
+      "ae2:io_port"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "charger",
+        "block": "ae2:charger",
+        "pos": [
+          4,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "bench",
+        "block": "minecraft:crafting_table",
+        "pos": [
+          7,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "omni_type_filter",
+    "chapter": "ae2omnicells",
+    "requiresMods": [
+      "ae2omnicells"
+    ],
+    "title": {
+      "ja": "資源の種類ごとに受け入れを分ける",
+      "en": "Filtering whole resource types"
+    },
+    "summary": {
+      "ja": "セルワークベンチで全資源型への一致や除外を設定します",
+      "en": "Cell-workbench cards match full resource types or exclude items"
+    },
+    "icon": "ae2omnicells:type_fuzzy_card",
+    "steps": [
+      {
+        "text": {
+          "ja": "OMNIセルはセルワークベンチで設定します\nタイプファジーなしでは個別の資源を指定します",
+          "en": "The cell workbench configures an OMNI cell\nWithout Type Fuzzy, partitions list specific resources"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_cell_1k",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "タイプファジーカードと品物の見本で型全体を指定します\n型が一致すると、その種類のほかの品物も受け入れます\nその品物だけを許可する設定ではありません",
+          "en": "A Type Fuzzy Card and one item sample select the full resource type\nA matching resource type includes its other items too\nIt no longer allows only that one item"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:type_fuzzy_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "minecraft:iron_ingot",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "液体を登録すれば液体という資源型を許可します\n液体入りバケツでフィルタ枠を右クリックします\n中の液体を選べます",
+          "en": "Mark a fluid to allow the fluid resource type\nRight-click a filter slot with a filled bucket\nThis selects its fluid"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "反転カードで登録した資源型を除外できます\n複数の資源型も組み合わせて指定できます",
+          "en": "An Inverter Card instead rejects marked resource types\nYou can combine multiple sample resource types"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2omnicells:type_fuzzy_card",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "登録が空なら追加の制限はありません\nタイプファジーはOMNIセル用です\nAE2の通常のファジーカードとは違います",
+          "en": "An empty partition adds no restriction\nType Fuzzy works on OMNI cells\nIt differs from AE2's ordinary Fuzzy Card"
+        },
+        "show": [],
+        "focus": [
+          "workbench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:type_fuzzy_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2:fuzzy_card",
+            "anchor": "workbench"
+          }
+        ],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2omnicells:type_fuzzy_card",
+      "ae2omnicells:omni_cell_1k",
+      "ae2omnicells:complex_omni_cell_1k",
+      "ae2omnicells:quantum_omni_cell_1k",
+      "ae2omnicells:omni_cell_4k",
+      "ae2omnicells:complex_omni_cell_4k",
+      "ae2omnicells:quantum_omni_cell_4k",
+      "ae2omnicells:omni_cell_16k",
+      "ae2omnicells:complex_omni_cell_16k",
+      "ae2omnicells:quantum_omni_cell_16k",
+      "ae2omnicells:omni_cell_64k",
+      "ae2omnicells:complex_omni_cell_64k",
+      "ae2omnicells:quantum_omni_cell_64k",
+      "ae2omnicells:omni_cell_256k",
+      "ae2omnicells:complex_omni_cell_256k",
+      "ae2omnicells:quantum_omni_cell_256k",
+      "ae2omnicells:omni_cell_1m",
+      "ae2omnicells:complex_omni_cell_1m",
+      "ae2omnicells:quantum_omni_cell_1m",
+      "ae2omnicells:omni_cell_4m",
+      "ae2omnicells:complex_omni_cell_4m",
+      "ae2omnicells:quantum_omni_cell_4m",
+      "ae2omnicells:omni_cell_16m",
+      "ae2omnicells:complex_omni_cell_16m",
+      "ae2omnicells:quantum_omni_cell_16m",
+      "ae2omnicells:omni_cell_64m",
+      "ae2omnicells:complex_omni_cell_64m",
+      "ae2omnicells:quantum_omni_cell_64m",
+      "ae2omnicells:omni_cell_256m",
+      "ae2omnicells:complex_omni_cell_256m",
+      "ae2omnicells:quantum_omni_cell_256m",
+      "ae2:cell_workbench",
+      "ae2:inverter_card",
+      "ae2:fuzzy_card"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "omni_crafting",
+    "chapter": "ae2omnicells",
+    "requiresMods": [
+      "ae2omnicells"
+    ],
+    "title": {
+      "ja": "OMNIのクラフト容量と並列処理",
+      "en": "OMNI crafting storage and co-processors"
+    },
+    "summary": {
+      "ja": "ストレージと並列発送能力を持つCPUを組みます",
+      "en": "Build a CPU with storage and built-in dispatch capacity"
+    },
+    "icon": "ae2omnicells:omni_crafting_storage_1k_block",
+    "steps": [
+      {
+        "text": {
+          "ja": "OMNIクラフトCPUは中身の詰まった直方体にします\nOMNIクラフトストレージを最低1個含めます\nプロバイダと組立機のネットへつなぎます",
+          "en": "An OMNI crafting CPU is a filled rectangular prism\nInclude at least one OMNI crafting storage block\nJoin the provider and assembler network"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "storage",
+          "co",
+          "unit",
+          "monitor"
+        ],
+        "focus": [
+          "storage",
+          "co",
+          "unit",
+          "monitor"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_crafting_storage_1k_block",
+            "anchor": "storage"
+          },
+          {
+            "item": "ae2:pattern_provider",
+            "anchor": "access"
+          },
+          {
+            "item": "ae2:molecular_assembler",
+            "anchor": "access"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "標準ではOMNIの1k〜256kは各4並列です\n1m〜256mは各8並列です\nクラフト容量はドライブの保存容量とは別です",
+          "en": "By default, OMNI 1k to 256k provides four co-processors\nEach 1m to 256m storage block provides eight\nCrafting bytes are separate from drive-cell bytes"
+        },
+        "show": [],
+        "focus": [
+          "storage",
+          "co",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:omni_crafting_storage_1m_block",
+            "anchor": "storage"
+          },
+          {
+            "item": "ae2omnicells:omni_cell_1m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "Complexの標準値は0〜256並列です\nQuantumの標準値は512〜8192並列です\n材料の発送能力が増えます\n独立したジョブの数は増えません",
+          "en": "Complex defaults range from zero to 256 co-processors\nQuantum defaults range from 512 to 8192\nThey increase ingredient dispatch\nThey do not add independent jobs"
+        },
+        "show": [],
+        "focus": [
+          "co"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:complex_crafting_storage_256m_block",
+            "anchor": "co"
+          },
+          {
+            "item": "ae2omnicells:quantum_crafting_storage_256m_block",
+            "anchor": "co"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "並列数はOMNIの設定で変更できます\n反映には再起動が必要です\nCPUの比較では、設定された値が基準になります",
+          "en": "OMNI configuration can change co-processor values\nChanges require a restart\nConfigured values matter when comparing CPUs"
+        },
+        "show": [],
+        "focus": [
+          "storage",
+          "co"
+        ],
+        "callouts": [],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "1CPUは同時に1ジョブです\n別のCPUを加えると、もう1件の依頼を同時に動かせます",
+          "en": "One CPU runs one job at a time\nA second CPU lets another crafting job run at the same time"
+        },
+        "show": [
+          "othercpu"
+        ],
+        "focus": [
+          "storage",
+          "othercpu"
+        ],
+        "callouts": [
+          {
+            "item": "ae2omnicells:quantum_crafting_storage_1k_block",
+            "anchor": "othercpu"
+          }
+        ]
+      }
+    ],
+    "components": [
+      "ae2omnicells:omni_crafting_unit_block",
+      "ae2omnicells:omni_crafting_monitor_block",
+      "ae2omnicells:omni_crafting_storage_1k_block",
+      "ae2omnicells:omni_crafting_storage_4k_block",
+      "ae2omnicells:omni_crafting_storage_16k_block",
+      "ae2omnicells:omni_crafting_storage_64k_block",
+      "ae2omnicells:omni_crafting_storage_256k_block",
+      "ae2omnicells:omni_crafting_storage_1m_block",
+      "ae2omnicells:omni_crafting_storage_4m_block",
+      "ae2omnicells:omni_crafting_storage_16m_block",
+      "ae2omnicells:omni_crafting_storage_64m_block",
+      "ae2omnicells:omni_crafting_storage_256m_block",
+      "ae2omnicells:complex_crafting_unit_block",
+      "ae2omnicells:complex_crafting_monitor_block",
+      "ae2omnicells:complex_crafting_storage_1k_block",
+      "ae2omnicells:complex_crafting_storage_4k_block",
+      "ae2omnicells:complex_crafting_storage_16k_block",
+      "ae2omnicells:complex_crafting_storage_64k_block",
+      "ae2omnicells:complex_crafting_storage_256k_block",
+      "ae2omnicells:complex_crafting_storage_1m_block",
+      "ae2omnicells:complex_crafting_storage_4m_block",
+      "ae2omnicells:complex_crafting_storage_16m_block",
+      "ae2omnicells:complex_crafting_storage_64m_block",
+      "ae2omnicells:complex_crafting_storage_256m_block",
+      "ae2omnicells:quantum_crafting_unit_block",
+      "ae2omnicells:quantum_crafting_monitor_block",
+      "ae2omnicells:quantum_crafting_storage_1k_block",
+      "ae2omnicells:quantum_crafting_storage_4k_block",
+      "ae2omnicells:quantum_crafting_storage_16k_block",
+      "ae2omnicells:quantum_crafting_storage_64k_block",
+      "ae2omnicells:quantum_crafting_storage_256k_block",
+      "ae2omnicells:quantum_crafting_storage_1m_block",
+      "ae2omnicells:quantum_crafting_storage_4m_block",
+      "ae2omnicells:quantum_crafting_storage_16m_block",
+      "ae2omnicells:quantum_crafting_storage_64m_block",
+      "ae2omnicells:quantum_crafting_storage_256m_block",
+      "ae2:pattern_provider",
+      "ae2:molecular_assembler",
+      "ae2:crafting_terminal"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "storage",
+        "block": "ae2omnicells:omni_crafting_storage_1k_block",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "co",
+        "block": "ae2omnicells:omni_crafting_storage_4k_block",
+        "pos": [
+          4,
+          1,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "unit",
+        "block": "ae2omnicells:omni_crafting_unit_block",
+        "pos": [
+          3,
+          2,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "monitor",
+        "block": "ae2omnicells:omni_crafting_monitor_block",
+        "pos": [
+          4,
+          2,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true",
+          "facing": "north"
+        }
+      },
+      {
+        "id": "othercpu",
+        "block": "ae2omnicells:quantum_crafting_storage_1k_block",
+        "pos": [
+          6,
+          1,
+          4
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bigger_quantum_items",
+    "chapter": "bigger_ae2",
+    "requiresMods": [
+      "bigger_ae2"
+    ],
+    "title": {
+      "ja": "Bigger AE2の量子アイテムセル",
+      "en": "Bigger AE2 quantum item storage"
+    },
+    "summary": {
+      "ja": "量子アイテムセルは1種類のアイテムを有限量まで収納します",
+      "en": "Quantum item cells store one item type up to a finite capacity"
+    },
+    "icon": "bigger_ae2:quantum_item_storage_cell",
+    "steps": [
+      {
+        "text": {
+          "ja": "量子セル部品を用意します\n高度なアイテムセル筐体と組み合わせます\n量子アイテムセルをMEドライブに入れます",
+          "en": "Use a Quantum Cell Component\nCombine it with an Advanced Item Cell Housing\nPut the quantum item cell in an ME drive"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "workbench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_cell_component",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:advanced_item_cell_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:quantum_item_storage_cell",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "このセルは1種類専用です\nデータが違うと別の種類になる場合があります\n大量の単一アイテムを保管する用途に向いています",
+          "en": "This cell holds one item type\nDifferent item data can count as different types\nIt suits dedicated bulk storage for one item"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:cobblestone",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "容量は128 MiBです\n種類用に65536バイトを使います\n容量計算は通常のアイテムセルと同じです\n総容量は有限です",
+          "en": "Its capacity is 128 MiB\nType overhead uses 65536 bytes\nNormal item-cell byte accounting still applies\nThe total capacity is finite"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_item_storage_cell",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "セルは待機時に20 AE/tを使います\nドライブの空きチャネルも必要です\n容量を増やしても電力やチャネル不足は直りません",
+          "en": "The cell uses 20 AE/t at idle\nThe drive still needs a free channel\nMore capacity cannot fix power or channel shortages"
+        },
+        "show": [],
+        "focus": [
+          "power",
+          "buffer",
+          "drive"
+        ],
+        "callouts": [],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "再利用の前にセルを別の収納へ空にします\n空のセルをスニーク右クリックします\n部品と筐体に戻ります",
+          "en": "The cell must be empty before reuse\nSneak-right-click the empty cell\nIts component and housing are returned"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_cell_component",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:advanced_item_cell_housing",
+            "anchor": "workbench"
+          }
+        ],
+        "flow": {
+          "from": "io",
+          "to": "drive",
+          "item": "minecraft:cobblestone"
+        }
+      }
+    ],
+    "components": [
+      "bigger_ae2:quantum_item_storage_cell",
+      "bigger_ae2:quantum_cell_component",
+      "bigger_ae2:advanced_item_cell_housing",
+      "ae2:drive",
+      "ae2:io_port"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bigger_quantum_fluids",
+    "chapter": "bigger_ae2",
+    "requiresMods": [
+      "bigger_ae2"
+    ],
+    "title": {
+      "ja": "Bigger AE2の量子液体セル",
+      "en": "Bigger AE2 quantum fluid storage"
+    },
+    "summary": {
+      "ja": "量子液体セルは1種類の液体を大容量で収納します",
+      "en": "A quantum fluid cell stores one fluid type at high capacity"
+    },
+    "icon": "bigger_ae2:quantum_fluid_storage_cell",
+    "steps": [
+      {
+        "text": {
+          "ja": "量子セル部品を用意します\n高度な液体セル筐体と組み合わせます\n液体版のセルができます",
+          "en": "Use a Quantum Cell Component\nCombine it with an Advanced Fluid Cell Housing\nThis makes the fluid version"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_cell_component",
+            "anchor": "drive"
+          },
+          {
+            "item": "bigger_ae2:advanced_fluid_cell_housing",
+            "anchor": "drive"
+          },
+          {
+            "item": "bigger_ae2:quantum_fluid_storage_cell",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "量子液体セルは1種類専用です\n水と溶岩には別のセルが必要です\n液体入りバケツという品物とは区別します",
+          "en": "A quantum fluid cell holds one fluid type\nWater and lava need separate cells\nA filled bucket item is different from stored fluid"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "drive"
+          },
+          {
+            "item": "minecraft:lava_bucket",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "容量は128 MiBです\n種類用に65536バイトを使います\n液体の容量計算はアイテム個数とは異なります\n総容量は有限です",
+          "en": "Its capacity is 128 MiB\nType overhead uses 65536 bytes\nFluid accounting differs from item counts\nThe total capacity is still finite"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_fluid_storage_cell",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "AE2の入出力バスや収納バスで液体を移します\n容器でフィルタ枠を右クリックします\n中の液体を選べます",
+          "en": "Use AE2 import, export, or storage buses for fluids\nRight-click a filter slot with a fluid container\nThis selects its fluid"
+        },
+        "show": [
+          "tank",
+          "fluidbus"
+        ],
+        "focus": [
+          "tank",
+          "fluidbus"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "fluidbus"
+          },
+          {
+            "item": "ae2:import_bus",
+            "anchor": "fluidbus"
+          },
+          {
+            "item": "ae2:export_bus",
+            "anchor": "fluidbus"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "ドライブには電力が必要で、移動先にも空きが必要です\nIOポートを通すと液体セルを空にできます\n空のセルだけを分解できます",
+          "en": "The drive needs power, and the destination needs free space\nAn IO port empties the cell\nOnly empty cells can be disassembled"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io",
+          "drive",
+          "power"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:quantum_fluid_storage_cell",
+            "anchor": "io"
+          }
+        ],
+        "warning": true
+      }
+    ],
+    "components": [
+      "bigger_ae2:quantum_fluid_storage_cell",
+      "bigger_ae2:quantum_cell_component",
+      "bigger_ae2:advanced_fluid_cell_housing",
+      "ae2:drive",
+      "ae2:io_port",
+      "ae2:storage_bus",
+      "ae2:import_bus",
+      "ae2:export_bus"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "tank",
+        "block": "ae2:sky_stone_tank",
+        "pos": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "fluidbus",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"south\"]}},\"north\":{\"id\":\"ae2:storage_bus\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          4,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bigger_singularity",
+    "chapter": "bigger_ae2",
+    "requiresMods": [
+      "bigger_ae2"
+    ],
+    "title": {
+      "ja": "デジタル特異点に1種類を集める",
+      "en": "One resource in a digital singularity"
+    },
+    "summary": {
+      "ja": "デジタル特異点セルは指定した1種類を数量上限なく収納します",
+      "en": "Digital Singularity cells store one selected resource without a quantity limit"
+    },
+    "icon": "bigger_ae2:digital_singularity_item_storage_cell",
+    "steps": [
+      {
+        "text": {
+          "ja": "デジタル特異点セル部品を対応する筐体に組み込みます\nアイテム用か液体用の筐体と組み合わせます\nアイテム版と液体版は別です",
+          "en": "A Digital Singularity Cell Component fits an item or fluid housing\nCombine it with an item or fluid housing\nThe item and fluid variants are separate"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "drive",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:digital_singularity_cell_component",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:digital_singularity_item_storage_cell",
+            "anchor": "drive"
+          },
+          {
+            "item": "bigger_ae2:digital_singularity_fluid_storage_cell",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "セルワークベンチで1つの資源を指定します\n最初の投入でも種類を決められます\n違う資源は同じセルに入りません",
+          "en": "The cell workbench assigns one resource to the cell\nThe first insertion can also select the resource\nA different resource cannot share this cell"
+        },
+        "show": [],
+        "focus": [
+          "workbench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:cobblestone",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "数量はBigIntegerで保存され上限がありません\n1種類だけという制限は残ります",
+          "en": "A BigInteger stores quantity without a fixed cap\nThe one-resource restriction still applies"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:digital_singularity_item_storage_cell",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "ネットの表示量はlong整数の上限で止まる場合があります\nセル自体はさらに保存できる場合があります\n表示上限を超える数量はセルのツールチップに表示されます",
+          "en": "The network display can stop at the long-number limit\nThe cell may still hold more than that\nThe cell tooltip shows amounts beyond the network display limit"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "access"
+        ],
+        "callouts": [],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "電力が途切れるとセルへアクセスできません\n資源の変更や分解には、先にセルを空にします\n空のセルは部品と筐体に戻せます",
+          "en": "The cell needs continuous power for access\nEmpty the cell before changing its resource or disassembling it\nThe empty cell returns its component and housing"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io",
+          "workbench",
+          "power"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:digital_singularity_cell_component",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:advanced_item_cell_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "bigger_ae2:advanced_fluid_cell_housing",
+            "anchor": "workbench"
+          }
+        ],
+        "warning": true,
+        "flow": {
+          "from": "io",
+          "to": "drive",
+          "item": "minecraft:cobblestone"
+        }
+      }
+    ],
+    "components": [
+      "bigger_ae2:digital_singularity_item_storage_cell",
+      "bigger_ae2:digital_singularity_fluid_storage_cell",
+      "bigger_ae2:digital_singularity_cell_component",
+      "bigger_ae2:advanced_item_cell_housing",
+      "bigger_ae2:advanced_fluid_cell_housing",
+      "ae2:cell_workbench",
+      "ae2:io_port"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bigger_crafting",
+    "chapter": "bigger_ae2",
+    "requiresMods": [
+      "bigger_ae2"
+    ],
+    "title": {
+      "ja": "小さくまとめる多コア並列処理",
+      "en": "Compact multi-core crafting accelerators"
+    },
+    "summary": {
+      "ja": "クラフト容量を保ったまま、並列処理数を増やします",
+      "en": "More dispatch capacity without adding crafting bytes"
+    },
+    "icon": "bigger_ae2:4_core_crafting_accelerator",
+    "steps": [
+      {
+        "text": {
+          "ja": "中身の詰まった直方体のCPUを組みます\nBigger AE2の並列処理部を使います\nAE2のクラフトストレージに隣接させます",
+          "en": "Build a filled rectangular crafting CPU\nPut a Bigger AE2 accelerator beside AE2 crafting storage"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "storage",
+          "co",
+          "unit",
+          "monitor"
+        ],
+        "focus": [
+          "storage",
+          "co",
+          "unit",
+          "monitor"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:4_core_crafting_accelerator",
+            "anchor": "co"
+          },
+          {
+            "item": "ae2:64k_crafting_storage",
+            "anchor": "storage"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "並列処理には4・16・64・256・1024コアがあります",
+          "en": "The accelerators provide 4, 16, 64, 256, or 1024 threads"
+        },
+        "show": [],
+        "focus": [
+          "co"
+        ],
+        "callouts": [
+          {
+            "item": "bigger_ae2:16_core_crafting_accelerator",
+            "anchor": "co"
+          },
+          {
+            "item": "bigger_ae2:256_core_crafting_accelerator",
+            "anchor": "co"
+          },
+          {
+            "item": "bigger_ae2:1024_core_crafting_accelerator",
+            "anchor": "co"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "並列処理ブロックにはクラフト容量がありません\nCPUにはAE2クラフトストレージが最低1個必要です",
+          "en": "These blocks provide no crafting storage bytes\nAt least one AE2 crafting storage block must remain in the CPU"
+        },
+        "show": [],
+        "focus": [
+          "storage",
+          "co"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:64k_crafting_storage",
+            "anchor": "storage"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "コアが増えると材料の発送が増えます\n機械やプロバイダの処理能力も必要です\nコアを増やしても独立ジョブは増えません",
+          "en": "More threads dispatch more ingredients\nMachines and providers must keep up\nExtra threads do not add independent jobs"
+        },
+        "show": [],
+        "focus": [
+          "co",
+          "access"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:pattern_provider",
+            "anchor": "access"
+          },
+          {
+            "item": "ae2:molecular_assembler",
+            "anchor": "access"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "1CPUは同時に1ジョブのままです\n別のCPUがあれば、もう1件の依頼を並行処理できます",
+          "en": "One CPU still runs one job at a time\nA second CPU can run another job in parallel"
+        },
+        "show": [
+          "othercpu"
+        ],
+        "focus": [
+          "storage",
+          "othercpu"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:1k_crafting_storage",
+            "anchor": "othercpu"
+          }
+        ]
+      }
+    ],
+    "components": [
+      "bigger_ae2:4_core_crafting_accelerator",
+      "bigger_ae2:16_core_crafting_accelerator",
+      "bigger_ae2:64_core_crafting_accelerator",
+      "bigger_ae2:256_core_crafting_accelerator",
+      "bigger_ae2:1024_core_crafting_accelerator",
+      "ae2:1k_crafting_storage",
+      "ae2:4k_crafting_storage",
+      "ae2:16k_crafting_storage",
+      "ae2:64k_crafting_storage",
+      "ae2:256k_crafting_storage",
+      "ae2:crafting_unit",
+      "ae2:crafting_monitor",
+      "ae2:pattern_provider",
+      "ae2:molecular_assembler"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "storage",
+        "block": "ae2:64k_crafting_storage",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "co",
+        "block": "bigger_ae2:4_core_crafting_accelerator",
+        "pos": [
+          4,
+          1,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "unit",
+        "block": "ae2:crafting_unit",
+        "pos": [
+          3,
+          2,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      },
+      {
+        "id": "monitor",
+        "block": "ae2:crafting_monitor",
+        "pos": [
+          4,
+          2,
+          3
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true",
+          "facing": "north"
+        }
+      },
+      {
+        "id": "othercpu",
+        "block": "ae2:1k_crafting_storage",
+        "pos": [
+          6,
+          1,
+          4
+        ],
+        "state": {
+          "formed": "true",
+          "powered": "true"
+        }
+      }
+    ]
+  },
+  {
+    "id": "things_disks",
+    "chapter": "ae2things",
+    "requiresMods": [
+      "ae2things"
+    ],
+    "title": {
+      "ja": "種類上限のないDISKを使う",
+      "en": "DISKs without an item-type limit"
+    },
+    "summary": {
+      "ja": "DISKは多種類をまとめ、アイテム数の容量は部品段階で決まります",
+      "en": "DISKs hold many item types; their item capacity follows the component tier"
+    },
+    "icon": "ae2things:disk_drive_1k",
+    "steps": [
+      {
+        "text": {
+          "ja": "DISK筐体のレシピにはクォーツガラスとレッドストーンを使います\nネザライトインゴットとアメジストも使います",
+          "en": "The DISK housing recipe includes quartz glass and redstone\nAlso use netherite ingots and amethyst"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "bench",
+          "workbench"
+        ],
+        "focus": [
+          "bench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_housing",
+            "anchor": "bench"
+          },
+          {
+            "item": "minecraft:netherite_ingot",
+            "anchor": "bench"
+          },
+          {
+            "item": "minecraft:amethyst_shard",
+            "anchor": "bench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "筐体には同じ段階のAE2部品を組み合わせます\n完成したDISKはMEドライブに入ります",
+          "en": "An AE2 component of the matching tier completes the housing\nA completed DISK fits in an ME drive"
+        },
+        "show": [],
+        "focus": [
+          "bench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_housing",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2:cell_component_1k",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2things:disk_drive_1k",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "DISKのアイテム種類数には固定上限がありません\n液体は入りません\n保存できる総個数は有限です",
+          "en": "DISKs store items without a fixed type limit\nThey do not accept fluids\nTheir total item capacity is finite"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "access"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_1k",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "1アイテムが1バイトを使います\n1k DISKは1000個入ります\n4k DISKは4000個入ります\n16k DISKは16000個入ります\n64k DISKは64000個入ります\n256k DISKは256000個入ります",
+          "en": "One item uses one byte\nA 1k DISK holds 1000 items\nA 4k DISK holds 4000 items\nA 16k DISK holds 16000 items\nA 64k DISK holds 64000 items\nA 256k DISK holds 256000 items"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_4k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2things:disk_drive_16k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2things:disk_drive_256k",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "多種類の品物を保存する用途に向いています\n同じ品物の大量保管では通常AE2セルと容量を比べます",
+          "en": "DISKs suit inventories with many item types\nFor one bulk item, compare normal AE2 cell capacity"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_64k",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2:item_storage_cell_64k",
+            "anchor": "drive"
+          }
+        ]
+      }
+    ],
+    "components": [
+      "ae2things:disk_drive_1k",
+      "ae2things:disk_drive_4k",
+      "ae2things:disk_drive_16k",
+      "ae2things:disk_drive_64k",
+      "ae2things:disk_drive_256k",
+      "ae2things:disk_housing",
+      "ae2:cell_component_1k",
+      "ae2:cell_component_4k",
+      "ae2:cell_component_16k",
+      "ae2:cell_component_64k",
+      "ae2:cell_component_256k",
+      "ae2:quartz_glass",
+      "ae2:drive",
+      "minecraft:redstone",
+      "minecraft:netherite_ingot",
+      "minecraft:amethyst_shard"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "bench",
+        "block": "minecraft:crafting_table",
+        "pos": [
+          7,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "things_filtering",
+    "chapter": "ae2things",
+    "requiresMods": [
+      "ae2things"
+    ],
+    "title": {
+      "ja": "DISKの分割とフィルタ",
+      "en": "Partitioning and filtering a DISK"
+    },
+    "summary": {
+      "ja": "ファジーと反転カードで受け入れ品を絞れます",
+      "en": "Fuzzy and Inverter cards define which items a DISK accepts"
+    },
+    "icon": "ae2things:disk_drive_4k",
+    "steps": [
+      {
+        "text": {
+          "ja": "AE2セルワークベンチでDISKの設定を編集します\n分割設定や装着カードを編集できます",
+          "en": "The AE2 cell workbench edits a DISK’s settings\nEdit its partition and upgrades there"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_4k",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "登録した品物が許可リストになります\n一致する品物だけ投入できます",
+          "en": "Registered item samples form a whitelist\nOnly matching items can be inserted"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "minecraft:iron_ingot",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "ファジーカードであいまい比較を使えます\n完全一致の代わりに選んだモードで比較します",
+          "en": "A Fuzzy Card enables fuzzy matching\nThe chosen mode replaces exact matching"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:fuzzy_card",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "反転カードはリストを除外リストにします\n一致する品物を拒否します",
+          "en": "An Inverter Card makes the list a blacklist\nIt rejects the matching items"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "DISKにはカード枠が2つあります\nファジーと反転を各1枚入れられます\nフィルタは容量を増やさず中身も消しません",
+          "en": "A DISK has two upgrade slots\nIt accepts one Fuzzy Card and one Inverter Card\nFilters do not add bytes or erase existing contents"
+        },
+        "show": [],
+        "focus": [
+          "workbench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:fuzzy_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2things:disk_drive_4k",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2things:disk_drive_1k",
+      "ae2things:disk_drive_4k",
+      "ae2things:disk_drive_16k",
+      "ae2things:disk_drive_64k",
+      "ae2things:disk_drive_256k",
+      "ae2:cell_workbench",
+      "ae2:fuzzy_card",
+      "ae2:inverter_card"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "things_reuse",
+    "chapter": "ae2things",
+    "requiresMods": [
+      "ae2things"
+    ],
+    "title": {
+      "ja": "DISKの引っ越しと再利用",
+      "en": "Moving and reusing a DISK"
+    },
+    "summary": {
+      "ja": "DISKを空にして部品へ戻し、ワールドデータも保ちます",
+      "en": "Empty a DISK before recovering its parts, and preserve world data"
+    },
+    "icon": "ae2things:disk_housing",
+    "steps": [
+      {
+        "text": {
+          "ja": "DISKを抜いても同じワールドの中身は残ります\nアイテムは保存データの識別子を持ちます",
+          "en": "Removing a DISK preserves its contents in that world\nThe item carries an identifier for its stored data"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_1k",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "IOポートを接続します\nDISKからネット収納へ移す方向を選びます",
+          "en": "Connect an IO port\nChoose transfer from the DISK to network storage"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_1k",
+            "anchor": "io"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "移動には移動先の空きが必要です\nすべての品物がなくなるまで待ちます\nフィルタで隠してもDISKは空になりません",
+          "en": "The destination needs enough free space for the transfer\nWait until every stored item is gone\nA restrictive filter does not empty a filled DISK"
+        },
+        "show": [],
+        "focus": [
+          "io",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2things:disk_drive_64k",
+            "anchor": "drive"
+          }
+        ],
+        "flow": {
+          "from": "io",
+          "to": "drive",
+          "item": "minecraft:iron_ingot"
+        },
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "空のDISKを持ってスニーク右クリックすると分解されます\nAE2部品とDISK筐体が戻ります\n装着カードも戻ります",
+          "en": "Sneak-right-clicking an empty DISK in hand disassembles it\nIt returns its AE2 component and DISK housing\nInstalled cards are returned too"
+        },
+        "show": [],
+        "focus": [
+          "io",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:cell_component_1k",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2things:disk_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "DISKの中身はワールドデータに保存されます\nワールド全体をバックアップしてください\nアイテム単体のコピーでは中身を保存できません",
+          "en": "DISK contents are saved in world data\nBack up the whole world\nCopying the item alone does not back up its contents"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "io"
+        ],
+        "callouts": [],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2things:disk_drive_1k",
+      "ae2things:disk_drive_4k",
+      "ae2things:disk_drive_16k",
+      "ae2things:disk_drive_64k",
+      "ae2things:disk_drive_256k",
+      "ae2things:disk_housing",
+      "ae2:cell_component_1k",
+      "ae2:cell_component_4k",
+      "ae2:cell_component_16k",
+      "ae2:cell_component_64k",
+      "ae2:cell_component_256k",
+      "ae2:io_port",
+      "ae2:cell_workbench",
+      "ae2:fuzzy_card",
+      "ae2:inverter_card"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mega_item_disks",
+    "chapter": "ae2_mega_things",
+    "requiresMods": [
+      "ae2_mega_things"
+    ],
+    "title": {
+      "ja": "MEGAのアイテムDISK",
+      "en": "MEGA item DISKs"
+    },
+    "summary": {
+      "ja": "種類上限のないアイテムDISKを1M〜256Mへ広げます",
+      "en": "Extend type-unlimited item DISKs from 1M to 256M"
+    },
+    "icon": "ae2_mega_things:item_disk_drive_1m",
+    "steps": [
+      {
+        "text": {
+          "ja": "AE2 MEGA Thingsは大きなアイテムDISKを追加します\n段階は1M・4M・16M・64M・256Mです",
+          "en": "AE2 MEGA Things adds larger item DISKs\nThe tiers are 1M, 4M, 16M, 64M, and 256M"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "bench"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_1m",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:item_disk_drive_16m",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:item_disk_drive_256m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "MEGA Cellsの対応部品がMEGAアイテムDISKの材料です\nMEGAアイテムDISK筐体と部品を組み合わせます",
+          "en": "The matching MEGA Cells component is used for item DISKs\nThe component combines with a MEGA Item DISK Housing"
+        },
+        "show": [],
+        "focus": [
+          "bench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "megacells:cell_component_1m",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2_mega_things:mega_item_disk_housing",
+            "anchor": "bench"
+          },
+          {
+            "item": "ae2_mega_things:item_disk_drive_1m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "このDISKは通常のMEドライブでも使えます\nアイテム種類数には固定上限がありません\n液体には別のDISKが必要です",
+          "en": "This DISK fits in a normal ME drive\nIts item type count has no fixed limit\nFluids need their own DISK"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "access"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_4m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "1アイテムが1バイトを使います\n1MのアイテムDISKは1000000個入ります\n256MのアイテムDISKは256000000個入ります",
+          "en": "One item uses one byte\nA 1M item DISK holds 1000000 items\nA 256M item DISK holds 256000000 items"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_1m",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:item_disk_drive_256m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "これらの容量は有限です\n投入が止まったら残り容量を確認します\nドライブの電力とチャネルも確認してください",
+          "en": "These capacities are finite\nIf insertion stops, check remaining space\nAlso check drive power and channels"
+        },
+        "show": [],
+        "focus": [
+          "power",
+          "drive",
+          "access"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_64m",
+            "anchor": "drive"
+          }
+        ],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2_mega_things:item_disk_drive_1m",
+      "ae2_mega_things:item_disk_drive_4m",
+      "ae2_mega_things:item_disk_drive_16m",
+      "ae2_mega_things:item_disk_drive_64m",
+      "ae2_mega_things:item_disk_drive_256m",
+      "ae2_mega_things:mega_item_disk_housing",
+      "megacells:cell_component_1m",
+      "megacells:cell_component_4m",
+      "megacells:cell_component_16m",
+      "megacells:cell_component_64m",
+      "megacells:cell_component_256m",
+      "megacells:mega_item_cell_housing",
+      "ae2:drive"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "bench",
+        "block": "minecraft:crafting_table",
+        "pos": [
+          7,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mega_fluid_disks",
+    "chapter": "ae2_mega_things",
+    "requiresMods": [
+      "ae2_mega_things"
+    ],
+    "title": {
+      "ja": "種類上限のない液体DISK",
+      "en": "Fluid DISKs without a type limit"
+    },
+    "summary": {
+      "ja": "液体DISKは1kから256Mまでの段階があります",
+      "en": "Fluid DISKs range from 1k through 256M"
+    },
+    "icon": "ae2_mega_things:fluid_disk_drive_1k",
+    "steps": [
+      {
+        "text": {
+          "ja": "液体DISKは1k・4k・16k・64k・256kです\nMEGA版も1M〜256Mの5段階があります",
+          "en": "Fluid DISKs come in 1k, 4k, 16k, 64k, and 256k\nThere are also five MEGA tiers from 1M to 256M"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_1k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_256k",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_256m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "k段階はAE2部品を使います\n液体DISK筐体にAE2の対応部品を組み合わせます\nM段階はMEGA Cells部品を使います\nMEGA Cellsの部品はMEGA液体DISK筐体に使います",
+          "en": "For k tiers, use an AE2 component\nAn AE2 component fits a Fluid DISK Housing\nFor M tiers, use a MEGA Cells component\nA MEGA Cells component fits a MEGA Fluid DISK Housing"
+        },
+        "show": [],
+        "focus": [
+          "workbench",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:fluid_disk_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2_mega_things:mega_fluid_disk_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "megacells:cell_component_1m",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "1枚に多種類の液体を保存できます\n液体の搬送には通常のAE2バスを使えます\n液体入りバケツは液体と別のアイテムです",
+          "en": "One DISK can hold many fluid types\nOrdinary AE2 buses transfer these fluids\nA filled bucket is an item, separate from the fluid"
+        },
+        "show": [
+          "tank",
+          "fluidbus"
+        ],
+        "focus": [
+          "tank",
+          "fluidbus",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_1m",
+            "anchor": "drive"
+          },
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "fluidbus"
+          },
+          {
+            "item": "minecraft:lava_bucket",
+            "anchor": "tank"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "液体1000 mBで1バイトを使います\n1kの液体DISKは合計1000バケツ分です\n液体の種類数には固定上限がありません",
+          "en": "Every 1000 mB uses one byte\nA 1k fluid DISK holds 1000 buckets in total\nIts fluid type count has no fixed limit"
+        },
+        "show": [],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_1k",
+            "anchor": "drive"
+          },
+          {
+            "item": "minecraft:water_bucket",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "セルワークベンチで液体DISKを分割設定します\n反転カードで除外リストにできます\n液体DISKにファジーカードは使いません",
+          "en": "The cell workbench partitions a fluid DISK\nAn Inverter Card enables a blacklist\nFluid DISKs do not use Fuzzy Cards"
+        },
+        "show": [],
+        "focus": [
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_4m",
+            "anchor": "workbench"
+          }
+        ],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2_mega_things:fluid_disk_drive_1k",
+      "ae2_mega_things:fluid_disk_drive_4k",
+      "ae2_mega_things:fluid_disk_drive_16k",
+      "ae2_mega_things:fluid_disk_drive_64k",
+      "ae2_mega_things:fluid_disk_drive_256k",
+      "ae2_mega_things:fluid_disk_drive_1m",
+      "ae2_mega_things:fluid_disk_drive_4m",
+      "ae2_mega_things:fluid_disk_drive_16m",
+      "ae2_mega_things:fluid_disk_drive_64m",
+      "ae2_mega_things:fluid_disk_drive_256m",
+      "ae2_mega_things:fluid_disk_housing",
+      "ae2_mega_things:mega_fluid_disk_housing",
+      "ae2:cell_component_1k",
+      "ae2:cell_component_4k",
+      "ae2:cell_component_16k",
+      "ae2:cell_component_64k",
+      "ae2:cell_component_256k",
+      "megacells:cell_component_1m",
+      "megacells:cell_component_4m",
+      "megacells:cell_component_16m",
+      "megacells:cell_component_64m",
+      "megacells:cell_component_256m",
+      "ae2:fluid_cell_housing",
+      "megacells:mega_fluid_cell_housing",
+      "ae2:drive",
+      "ae2:cell_workbench",
+      "ae2:inverter_card",
+      "ae2:import_bus",
+      "ae2:export_bus",
+      "ae2:storage_bus"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "tank",
+        "block": "ae2:sky_stone_tank",
+        "pos": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "fluidbus",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"south\"]}},\"north\":{\"id\":\"ae2:storage_bus\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mega_disk_reuse",
+    "chapter": "ae2_mega_things",
+    "requiresMods": [
+      "ae2_mega_things"
+    ],
+    "title": {
+      "ja": "MEGA DISKの材料を再利用する",
+      "en": "Reusing MEGA DISK parts safely"
+    },
+    "summary": {
+      "ja": "アイテム・液体DISKを空にしてから材料へ戻します",
+      "en": "Empty item or fluid DISKs before recovering their parts"
+    },
+    "icon": "ae2_mega_things:mega_item_disk_housing",
+    "steps": [
+      {
+        "text": {
+          "ja": "MEGA DISKはAE2 Thingsのワールド保存を使います\nドライブから抜いても中身は残ります",
+          "en": "MEGA DISKs use AE2 Things world storage\nRemoving one from its drive does not empty it"
+        },
+        "show": [
+          "drive",
+          "power",
+          "buffer",
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "access",
+          "workbench"
+        ],
+        "focus": [
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_1m",
+            "anchor": "drive"
+          },
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_1m",
+            "anchor": "drive"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "IOポートで内容を別のネット収納へ移せます\n同じ資源型を受け入れる移動先を選んでください",
+          "en": "An IO port moves contents to other network storage\nChoose storage that accepts the same resource type"
+        },
+        "show": [
+          "io"
+        ],
+        "focus": [
+          "io",
+          "drive"
+        ],
+        "callouts": [
+          {
+            "item": "ae2_mega_things:item_disk_drive_1m",
+            "anchor": "io"
+          },
+          {
+            "item": "ae2_mega_things:fluid_disk_drive_1m",
+            "anchor": "io"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "再利用の前に全内容と移動先の空きを確認します\n分割設定や除外リストは保存済み資源を消しません",
+          "en": "All contents and destination space matter before reuse\nPartitions and blacklists do not erase stored resources"
+        },
+        "show": [],
+        "focus": [
+          "io",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "ae2:inverter_card",
+            "anchor": "workbench"
+          }
+        ],
+        "warning": true
+      },
+      {
+        "text": {
+          "ja": "空のDISKを持ってスニーク右クリックすると分解されます\n対応する部品とDISK筐体が戻ります\n装着カードも戻ります",
+          "en": "Sneak-right-clicking an empty DISK in hand disassembles it\nIt returns its matching component and housing\nInstalled cards are returned too"
+        },
+        "show": [],
+        "focus": [
+          "io",
+          "workbench"
+        ],
+        "callouts": [
+          {
+            "item": "megacells:cell_component_1m",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2_mega_things:mega_item_disk_housing",
+            "anchor": "workbench"
+          },
+          {
+            "item": "ae2_mega_things:mega_fluid_disk_housing",
+            "anchor": "workbench"
+          }
+        ]
+      },
+      {
+        "text": {
+          "ja": "DISKを移すときはワールド全体を保ちます\nバックアップもワールド全体で行います\n識別子だけには中身が含まれません",
+          "en": "Keep the complete world save when moving DISKs\nBack up the whole world too\nDISK identifiers alone do not contain stored contents"
+        },
+        "show": [],
+        "focus": [
+          "drive",
+          "io"
+        ],
+        "callouts": [],
+        "warning": true
+      }
+    ],
+    "components": [
+      "ae2_mega_things:item_disk_drive_1m",
+      "ae2_mega_things:item_disk_drive_4m",
+      "ae2_mega_things:item_disk_drive_16m",
+      "ae2_mega_things:item_disk_drive_64m",
+      "ae2_mega_things:item_disk_drive_256m",
+      "ae2_mega_things:fluid_disk_drive_1k",
+      "ae2_mega_things:fluid_disk_drive_4k",
+      "ae2_mega_things:fluid_disk_drive_16k",
+      "ae2_mega_things:fluid_disk_drive_64k",
+      "ae2_mega_things:fluid_disk_drive_256k",
+      "ae2_mega_things:fluid_disk_drive_1m",
+      "ae2_mega_things:fluid_disk_drive_4m",
+      "ae2_mega_things:fluid_disk_drive_16m",
+      "ae2_mega_things:fluid_disk_drive_64m",
+      "ae2_mega_things:fluid_disk_drive_256m",
+      "ae2_mega_things:mega_item_disk_housing",
+      "ae2_mega_things:fluid_disk_housing",
+      "ae2_mega_things:mega_fluid_disk_housing",
+      "ae2:cell_component_1k",
+      "ae2:cell_component_4k",
+      "ae2:cell_component_16k",
+      "ae2:cell_component_64k",
+      "ae2:cell_component_256k",
+      "megacells:cell_component_1m",
+      "megacells:cell_component_4m",
+      "megacells:cell_component_16m",
+      "megacells:cell_component_64m",
+      "megacells:cell_component_256m",
+      "ae2:io_port",
+      "ae2:cell_workbench",
+      "ae2:fuzzy_card",
+      "ae2:inverter_card"
+    ],
+    "nodes": [
+      {
+        "id": "drive",
+        "block": "ae2:drive",
+        "pos": [
+          1,
+          1,
+          4
+        ],
+        "nbt": "{\"visual\":{\"online\":1b}}",
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      },
+      {
+        "id": "power",
+        "block": "ae2:energy_acceptor",
+        "pos": [
+          1,
+          1,
+          5
+        ]
+      },
+      {
+        "id": "buffer",
+        "block": "ae2:energy_cell",
+        "pos": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "c1",
+        "block": "ae2:cable_bus",
+        "pos": [
+          2,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c2",
+        "block": "ae2:cable_bus",
+        "pos": [
+          3,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\",\"north\"]}}}"
+      },
+      {
+        "id": "c3",
+        "block": "ae2:cable_bus",
+        "pos": [
+          4,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"east\",\"west\"]}}}"
+      },
+      {
+        "id": "c4",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          1,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"west\",\"up\"]}}}"
+      },
+      {
+        "id": "access",
+        "block": "ae2:cable_bus",
+        "pos": [
+          5,
+          2,
+          4
+        ],
+        "nbt": "{\"cable\":{\"id\":\"ae2:fluix_smart_cable\",\"visual\":{\"powered\":1b,\"channels\":2,\"connections\":[\"down\"]}},\"north\":{\"id\":\"ae2:crafting_terminal\",\"visual\":{\"powered\":1b}}}"
+      },
+      {
+        "id": "workbench",
+        "block": "ae2:cell_workbench",
+        "pos": [
+          4,
+          1,
+          3
+        ]
+      },
+      {
+        "id": "io",
+        "block": "ae2:io_port",
+        "pos": [
+          3,
+          1,
+          3
+        ],
+        "state": {
+          "facing": "north",
+          "spin": "0"
+        }
+      }
+    ]
+  }
+]

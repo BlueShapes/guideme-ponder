@@ -1,0 +1,300 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148' apply false
+    id 'net.neoforged.moddev.legacyforge' version '2.0.148' apply false
+}
+
+def platform = providers.gradleProperty('platform').getOrElse('neoforge')
+if (!(platform in ['neoforge', 'forge'])) throw new GradleException("Unknown platform '${platform}': use neoforge or forge")
+def forgeTarget = platform == 'forge'
+apply plugin: forgeTarget ? 'net.neoforged.moddev.legacyforge' : 'net.neoforged.moddev'
+if (forgeTarget) layout.buildDirectory = file('build/forge')
+
+group = 'dev.ae2guide'
+version = mod_version
+base.archivesName = 'ae2-ponder-guide'
+java.toolchain.languageVersion = JavaLanguageVersion.of(forgeTarget ? 17 : 21)
+
+sourceSets {
+    main {
+        java.srcDir("src/${platform}/java")
+        resources.srcDir("src/${platform}/resources")
+    }
+    validation {
+        java.srcDir("src/${platform}Validation/java")
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.createmod.net' }
+    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } }
+    maven { url = 'https://www.cursemaven.com'; content { includeGroup 'curse.maven' } }
+}
+
+def loader = forgeTarget ? legacyForge : neoForge
+if (forgeTarget) {
+    legacyForge.enable {
+        forgeVersion = "1.20.1-${forge_version}"
+        disableRecompilation = true
+    }
+} else {
+    neoForge.version = neo_version
+}
+loader.with {
+    runs {
+        client {
+            client()
+            if (forgeTarget) gameDirectory = file('run/forge')
+        }
+        server {
+            server()
+            if (forgeTarget) gameDirectory = file('run/forge-server')
+            programArgument '--nogui'
+        }
+        validationClient {
+            client()
+            sourceSet = sourceSets.validation
+            gameDirectory = layout.buildDirectory.dir('validation-run').get().asFile
+            systemProperty 'ae2ponder.validate', 'true'
+            systemProperty 'ae2ponder.validationLessons', project.findProperty('validationLessons') ?: ''
+            systemProperty 'ae2ponder.validateLanguages', project.hasProperty('validateLanguages').toString()
+            systemProperty 'ae2ponder.validateCaptions', project.hasProperty('validateCaptions').toString()
+            systemProperty 'ae2ponder.validateFocused', project.hasProperty('validateFocused').toString()
+            systemProperty 'ae2ponder.validateNarration', project.hasProperty('validateNarration').toString()
+            systemProperty 'ae2ponder.validateCoverage', (project.hasProperty('validateCoverage')
+                    || project.hasProperty('validateStaffOnly')
+                    || project.hasProperty('validateTextOnly')
+                    || project.hasProperty('validationAdditionalItems')
+                    || project.hasProperty('validationTextKeys')
+                    || project.hasProperty('validationTextSelection')).toString()
+            systemProperty 'ae2ponder.validateStaffOnly', project.hasProperty('validateStaffOnly').toString()
+            systemProperty 'ae2ponder.validateTextOnly', project.hasProperty('validateTextOnly').toString()
+            systemProperty 'ae2ponder.validationAdditionalItems', project.findProperty('validationAdditionalItems') ?: ''
+            systemProperty 'ae2ponder.validationTextKeys', project.findProperty('validationTextKeys') ?: ''
+            systemProperty 'ae2ponder.validationTextSelection', project.findProperty('validationTextSelection') ?: ''
+            systemProperty 'ae2ponder.validationPlatform', platform
+            systemProperty 'ae2ponder.expectAddons', (!project.hasProperty('withoutAddons')).toString()
+            if (project.hasProperty('validateCaptions') || project.hasProperty('validateNarration')
+                    || project.hasProperty('validateCoverage') || project.hasProperty('validateStaffOnly')
+                    || project.hasProperty('validateTextOnly') || project.hasProperty('validationAdditionalItems')
+                    || project.hasProperty('validationTextKeys') || project.hasProperty('validationTextSelection'))
+                programArguments.addAll '--width', '1280', '--height', '960'
+            else
+                programArguments.addAll '--width', '960', '--height', '640'
+            if (project.hasProperty('validateGuide'))
+                programArguments.addAll '--mixin.config', 'ae2ponder.validation.mixins.json'
+        }
+        performanceClient {
+            client()
+            sourceSet = sourceSets.validation
+            gameDirectory = layout.buildDirectory.dir('performance-run').get().asFile
+            systemProperty 'ae2ponder.profile', 'true'
+            jvmArguments.addAll "-Xms${project.findProperty('profileMinHeap') ?: '1G'}",
+                    "-Xmx${project.findProperty('profileMaxHeap') ?: '4G'}"
+            programArguments.addAll '--width', '1280', '--height', '720'
+        }
+    }
+    mods {
+        ae2ponder {
+            sourceSet(sourceSets.main)
+            if (project.hasProperty('validateGuide')) sourceSet(sourceSets.validation)
+        }
+    }
+}
+
+dependencies {
+    if (forgeTarget) {
+        modImplementation "net.createmod.ponder:Ponder-Forge-1.20.1:${forge_ponder_version}"
+        modRuntimeOnly "maven.modrinth:ae2:${forge_ae2_version}"
+        modImplementation "org.appliedenergistics:guideme:${forge_guideme_version}"
+        // Legacy mod configurations are not transitive; Ponder needs Flywheel explicitly.
+        modRuntimeOnly "dev.engine-room.flywheel:flywheel-forge-1.20.1:${forge_flywheel_version}"
+        annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    } else {
+        implementation "net.createmod.ponder:ponder-neoforge:${ponder_version}"
+        runtimeOnly "org.appliedenergistics:appliedenergistics2:${ae2_version}"
+        runtimeOnly 'org.appliedenergistics:guideme:21.1.19'
+        compileOnly 'org.appliedenergistics:guideme:21.1.19'
+        validationCompileOnly 'org.appliedenergistics:guideme:21.1.19'
+    }
+    // Development/test launches include every supported add-on. None is bundled or required by our JAR.
+    if (!project.hasProperty('withoutAddons')) {
+        if (forgeTarget) {
+            modRuntimeOnly "maven.modrinth:ae2-omni-cells:${forge_omni_version}"
+            modRuntimeOnly "maven.modrinth:bigger-ae2:${forge_bigger_version}"
+            modRuntimeOnly "curse.maven:ae2-things-609977:${forge_things_file}"
+            modRuntimeOnly "curse.maven:ae2-mega-things-1150075:${forge_mega_things_file}"
+            modRuntimeOnly "maven.modrinth:mega:${forge_megacells_version}"
+            modRuntimeOnly "maven.modrinth:kotlin-for-forge:${forge_kotlinforforge_version}"
+            modRuntimeOnly "maven.modrinth:cloth-config:${forge_cloth_config_version}"
+        } else {
+            runtimeOnly "maven.modrinth:ae2-omni-cells:${omni_version}"
+            runtimeOnly "maven.modrinth:bigger-ae2:${bigger_version}"
+            runtimeOnly 'curse.maven:ae2-things-609977:5637783'
+            runtimeOnly 'curse.maven:ae2-mega-things-1150075:6203833'
+            runtimeOnly "maven.modrinth:mega:${megacells_version}"
+            runtimeOnly "maven.modrinth:kotlin-for-forge:${kotlinforforge_version}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = forgeTarget ? 17 : 21
+}
+
+if (forgeTarget) {
+    mixin {
+        add sourceSets.main, 'ae2ponder.refmap.json'
+        config 'ae2ponder.mixins.json'
+    }
+    // Reobfuscation needs the annotation processor's side outputs after switching loaders.
+    tasks.named('compileJava', JavaCompile) {
+        outputs.files(layout.buildDirectory.file('mixin/ae2ponder.refmap.json'),
+                layout.buildDirectory.file('mixin/ae2ponder.refmap.json.mappings.tsrg'))
+    }
+    tasks.named('jar', Jar) {
+        archiveClassifier = 'forge-1.20.1'
+        manifest.attributes('MixinConfigs': 'ae2ponder.mixins.json')
+    }
+}
+
+processResources {
+    from('LICENSE')
+    from('THIRD_PARTY_NOTICES.md')
+    from('LICENSES') { into 'LICENSES' }
+    inputs.property 'version', project.version
+    inputs.property 'platform', platform
+    if (forgeTarget) {
+        exclude 'META-INF/neoforge.mods.toml'
+        doLast {
+            def configFile = new File(destinationDir, 'ae2ponder.mixins.json')
+            def config = new groovy.json.JsonSlurper().parse(configFile, 'UTF-8')
+            config.compatibilityLevel = 'JAVA_17'
+            config.refmap = 'ae2ponder.refmap.json'
+            // Forge Ponder already reads model data directly from each virtual block entity.
+            config.client.remove('PonderLevelModelDataMixin')
+            configFile.setText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(config)) + '\n', 'UTF-8')
+        }
+    }
+    filesMatching('META-INF/neoforge.mods.toml') { expand version: project.version }
+    filesMatching('META-INF/mods.toml') { expand version: project.version }
+    filesMatching('pack.mcmeta') {
+        expand packFormat: forgeTarget ? 15 : 34, dataPackFormat: forgeTarget ? 15 : 48
+    }
+}
+
+tasks.named('wrapper', Wrapper).configure { gradleVersion = '8.14.3' }
+
+// Minecraft can exit successfully after the harness records a failure.
+tasks.matching { it.name == 'runValidationClient' }.configureEach {
+    def resultFile = layout.buildDirectory.file('validation-run/validation-result.json')
+    def failureFile = layout.buildDirectory.file('validation-run/validation-failure.txt')
+    doFirst {
+        if (!project.hasProperty('validateGuide'))
+            throw new GradleException('runValidationClient requires -PvalidateGuide')
+        java.nio.file.Files.deleteIfExists(resultFile.get().asFile.toPath())
+        java.nio.file.Files.deleteIfExists(failureFile.get().asFile.toPath())
+    }
+    doLast {
+        def result = resultFile.get().asFile
+        if (!result.isFile() || new groovy.json.JsonSlurper().parse(result, 'UTF-8').passed != true) {
+            def failure = failureFile.get().asFile
+            throw new GradleException(failure.isFile()
+                    ? "Guide validation failed: ${failure.getText('UTF-8')}"
+                    : "Guide validation did not produce a successful result: ${result}")
+        }
+    }
+}
+apply from: 'gradle/localization.gradle'
+
+// Keep Ponder translation keys synchronized with the same data used by the catalogue.
+def guideResources = tasks.register('generateGuideResources') {
+    def lessonsFile = file('src/main/resources/assets/ae2ponder/guide/lessons.json')
+    def addonsFile = file('src/main/resources/assets/ae2ponder/guide/addons.json')
+    inputs.file(lessonsFile)
+    inputs.file(addonsFile)
+    inputs.file('src/main/resources/assets/ae2ponder/guide/item_descriptions.json')
+    inputs.dir('src/main/templates/lang')
+    inputs.dir('src/main/translations')
+    inputs.dir('src/main/caption_styles')
+    inputs.file('gradle/localization.gradle')
+    inputs.files(fileTree("src/${platform}/translations"))
+    inputs.property('platform', platform)
+    def destination = layout.buildDirectory.dir('generated/guideResources')
+    outputs.dir(destination)
+    doLast {
+        def core = new groovy.json.JsonSlurper().parse(lessonsFile, 'UTF-8')
+        def addons = new groovy.json.JsonSlurper().parse(addonsFile, 'UTF-8')
+        def supportedAddons = ['ae2omnicells', 'bigger_ae2', 'ae2things', 'ae2_mega_things'] as Set
+        assert core.every { !it.requiresMods } : 'Core AE2 lessons must not depend on add-ons'
+        assert addons.every { it.requiresMods && it.requiresMods.every { mod -> mod in supportedAddons }
+            && it.chapter == it.requiresMods.first() } : 'Optional lessons need their own supported add-on chapter and condition'
+        assert addons.collectMany { it.requiresMods }.toSet() == supportedAddons : 'Every supported add-on needs lessons'
+        assert addons*.chapter.toSet() == supportedAddons : 'Every supported add-on needs its own non-empty chapter'
+        addons.groupBy { it.chapter }.each { chapter, lessons ->
+            assert lessons.collect { it.requiresMods.join(',') }.toSet().size() == 1 : "All lessons in ${chapter} must share one availability condition"
+        }
+        def addonNamespaces = ['ae2omnicells': ['ae2omnicells'], 'bigger_ae2': ['bigger_ae2'],
+            'ae2things': ['ae2things'], 'ae2_mega_things': ['ae2_mega_things', 'ae2things', 'megacells']]
+        addons.each { lesson ->
+            def allowedNamespaces = ['minecraft', 'ae2'] + lesson.requiresMods.collectMany { addonNamespaces[it] }
+            def resources = [lesson.icon] + lesson.components + lesson.nodes*.block
+            lesson.steps.each { step ->
+                resources.addAll((step.callouts ?: [])*.item)
+                if (step.flow) resources.add(step.flow.item)
+            }
+            assert resources.every { it.split(':')[0] in allowedNamespaces } : "Unguarded add-on resource in ${lesson.id}"
+        }
+        def lessons = core + addons
+        def allowedChapters = ['start', 'network', 'storage', 'automation', 'advanced', 'troubleshooting'] + supportedAddons
+        assert lessons.size() >= 36 : 'The guide must cover all major AE2 systems'
+        assert lessons*.id.toSet().size() == lessons.size() : 'Duplicate lesson ID'
+        assert lessons*.chapter.toSet() == allowedChapters.toSet() : 'Missing or invalid chapter'
+        lessons.each { lesson ->
+            assert lesson.id ==~ /[a-z0-9_]+/ : "Invalid lesson ID ${lesson.id}"
+            assert lesson.icon && lesson.components && lesson.nodes && lesson.steps.size() >= 4 : "Incomplete ${lesson.id}"
+            assert lesson.nodes*.id.toSet().size() == lesson.nodes.size() : "Duplicate node in ${lesson.id}"
+            assert lesson.nodes*.pos.toSet().size() == lesson.nodes.size() : "Overlapping blocks in ${lesson.id}"
+            def ids = lesson.nodes*.id.toSet()
+            def visible = [] as Set
+            def revealed = [] as Set
+            lesson.nodes.each { node ->
+                assert node.pos.size() == 3 && node.pos[0] in 0..8 && node.pos[1] in 1..4 && node.pos[2] in 0..8 : "Out of bounds ${lesson.id}/${node.id}"
+            }
+            lesson.steps.each { step ->
+                def callouts = step.callouts ?: []
+                assert callouts.size() <= 3 : "Too many callouts in ${lesson.id}"
+                def refs = (step.show ?: []) + (step.focus ?: []) + (step.hide ?: []) + (step.nbt ?: [:]).keySet() + callouts*.anchor
+                if (step.flow) refs += [step.flow.from, step.flow.to]
+                assert refs.every { it in ids } : "Unknown node reference in ${lesson.id}"
+                visible.removeAll(step.hide ?: [])
+                visible.addAll(step.show ?: [])
+                revealed.addAll(step.show ?: [])
+                assert (step.focus ?: []).every { it in visible } : "Focus on invisible node in ${lesson.id}"
+                if (step.flow) assert step.flow.from in visible && step.flow.to in visible : "Invisible flow in ${lesson.id}"
+                callouts.each { callout ->
+                    assert callout.item ==~ '[a-z0-9_.-]+:[a-z0-9_./-]+' : "Invalid callout item in ${lesson.id}"
+                    assert callout.anchor in visible : "Callout on hidden node in ${lesson.id}"
+                    assert (callout.action ?: 'none') in ['none', 'right_click', 'left_click', 'scroll'] : "Invalid callout action in ${lesson.id}"
+                    assert (callout.pointing ?: 'down') in ['up', 'down', 'left', 'right'] : "Invalid callout direction in ${lesson.id}"
+                    def offset = callout.offset ?: [0, 0.25, 0]
+                    assert offset.size() == 3 && offset.every { it instanceof Number && it >= -2 && it <= 2 } : "Invalid callout offset in ${lesson.id}"
+                    assert !callout.sneak || callout.action in ['right_click', 'left_click', 'scroll'] : "Sneak without an action in ${lesson.id}"
+                }
+            }
+            assert lesson.steps.any { it.callouts } : "Lesson has no item callouts: ${lesson.id}"
+            assert revealed == ids : "Unrevealed nodes in ${lesson.id}: ${ids - revealed}"
+        }
+        generateLocalizedGuideResources(lessons, destination.get().asFile)
+        def calloutCount = lessons.sum { lesson -> lesson.steps.sum { step -> (step.callouts ?: []).size() } }
+        logger.lifecycle("Validated ${lessons.size()} lessons and ${calloutCount} item callouts")
+    }
+}
+sourceSets.main.resources.srcDir(guideResources)
+tasks.named('check').configure { dependsOn guideResources }
